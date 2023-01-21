@@ -1,14 +1,15 @@
 import { DataSource } from "typeorm";
-
 import { Usuario } from "../entities/Usuario";
+import { DB_HOST, DB_USER, DB_PORT,DB_PASSWORD, DB_DATABASE } from '../config/config';
 
+const PORT:any=DB_PORT
 export const AppDataSource = new DataSource({
   type: "mysql",
-  host: "localhost",
-  port: 3306,
-  username: "user",
-  password: "password",
-  database: "temptationBD",
+  host: DB_HOST,
+  port: PORT,
+  username: DB_USER,
+  password: DB_PASSWORD,
+  database: DB_DATABASE,
   // synchronize: true,
   logging: false,
   entities: [Usuario],
