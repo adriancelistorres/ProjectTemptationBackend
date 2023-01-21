@@ -19,9 +19,8 @@ class LoginService {
     } catch (error) {
       if (error instanceof Error) {
         return Promise.reject(" does not exist ");
-      
+      }
     }
-  }
   }
 }
 
