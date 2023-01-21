@@ -11,7 +11,7 @@ class LoginController {
       const user = req.body;
       const service = new LoginService();
       const result = await service.Login(user.usuario, user.contrasena);
-      // console.log("LOG RESULT", result);
+      console.log("LOG RESULT", result);
       return res.json(result);
     } catch (error) {
       if (error instanceof Error) {
