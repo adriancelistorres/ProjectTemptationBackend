@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import { IPerson } from "../Interfaces/IPerson";
 import PersonService from "../services/person.service";
+import bcrypt from 'bcrypt'
 
 class PersonController{
     public async addPerson(req:Request,res:Response){
         try {
+
             const reqBody:IPerson=req.body;
             const service=new PersonService();
             const result=await service.addPerson(reqBody);

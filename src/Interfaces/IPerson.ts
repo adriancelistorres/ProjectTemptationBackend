@@ -1,3 +1,5 @@
+import { Long } from "typeorm";
+
 export interface IPerson{
   idrol: number,
   name: string,

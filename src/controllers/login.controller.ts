@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 
 import { ILoginUsuario } from "../Interfaces/ILoginUsuario";
 import LoginService from "../services/login.service";
+import bcrypt from 'bcrypt'
 
 class LoginController {
   constructor() {}

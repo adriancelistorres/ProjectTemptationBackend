@@ -1,9 +1,13 @@
 import { IPerson } from "../Interfaces/IPerson";
 import Person from "../entities/Person";
+import bcrypt from 'bcrypt'
+
 
 class PersonService {
 
-  public async addPerson(reqBody: IPerson) :Promise<Person>{
+  public async addPerson(reqBody: IPerson) {
+
+    const hashedPassword=await bcrypt.hash(reqBody.password,8)
 
     const person = new Person();
     person.idrol = reqBody.idrol;
@@ -14,7 +18,7 @@ class PersonService {
     person.gender = reqBody.gender;
     person.address = reqBody.address;
     person.username = reqBody.username;
-    person.password = reqBody.password;
+    person.password = hashedPassword;
     person.state = reqBody.state;
     person.key = reqBody.key;
 

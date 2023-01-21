@@ -1,7 +1,7 @@
 
 import { type } from "os";
 
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, Long, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 class Person extends BaseEntity {
