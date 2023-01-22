@@ -9,19 +9,3 @@ router.post("/addperson", person.addPerson);
 
 export default router;
 
-// // class Authroute implements Routes{
-// //     public path='/';
-// //     public router: Router;
-// //     public ruta1=new PersonController
-
-// //     constructor() {
-// //         this.InitializeRoutes();
-// //       }
-
-// //     private InitializeRoutes(){
-// //         this.router.post(`${this.path}addperson`, this.ruta1.addPerson);
-
-// //     }
-// // }
-
-// // export default Authroute;

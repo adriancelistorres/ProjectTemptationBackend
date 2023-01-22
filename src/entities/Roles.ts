@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
-export class Usuario extends BaseEntity {
+ class Roles extends BaseEntity {
   @PrimaryGeneratedColumn()
   idusua: number;
 
@@ -17,3 +17,5 @@ export class Usuario extends BaseEntity {
   @Column()
   estado: number;
 }
+
+export default Roles

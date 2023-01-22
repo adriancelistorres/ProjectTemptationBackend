@@ -1,20 +1,20 @@
-import { Usuario } from "../entities/Usuario";
+import { IPerson } from "../Interfaces/IPerson";
+import Person from "../entities/Person";
+import  Roles  from "../entities/Roles";
 import { AppDataSource } from "./../databases/db";
+import bcrypt from "bcrypt";
 
 class LoginService {
   constructor() {}
-
-  public async Login(usuario: string, contrasena: string) {
-    console.log("LOGservice", usuario, contrasena);
-
+  public async Login(username:string) {
+    // console.log("LOGservice", username, password);
     try {
       const data = await AppDataSource.createQueryBuilder()
-        .select("user")
-        .from(Usuario, "user")
-        .where("user.usuario = :usuario", { usuario })
-        .andWhere("user.contrasena = :contrasena", { contrasena })
+        .select("person")
+        .from(Person, "person")
+        .where("person.username = :username", { username })
+        // .andWhere("person.password = :password", { password })
         .getOne();
-      // console.log("LOG1", data);
       return data;
     } catch (error) {
       if (error instanceof Error) {
@@ -22,6 +22,11 @@ class LoginService {
       }
     }
   }
+  
+  // public comparacion(password:string,hash:string){
+  //   return bcrypt.compare(password, hash)
+
+  // }
 }
 
 export default LoginService;
