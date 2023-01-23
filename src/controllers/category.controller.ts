@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ICategory, ICategoryUpdate } from "../Interfaces/ICategory";
+import { ICategory} from "../Interfaces/ICategory";
 import CategoryService from "../services/category.service";
 
 class CategoryController{
@@ -47,7 +47,7 @@ class CategoryController{
     public async updateCatgory(req:Request,res: Response){
         try {
             const idcat:number =  parseInt(req.params.idcat);
-            const resBody:ICategoryUpdate =  req.body;
+            const resBody:ICategory =  req.body;
             const service= new CategoryService();
             const resulta =  await service.UpdateServiceCategory(idcat,resBody);
             return res.json(resulta);

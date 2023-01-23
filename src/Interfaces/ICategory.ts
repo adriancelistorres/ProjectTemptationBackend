@@ -1,18 +1,7 @@
 export interface ICategory{
-    idcat: number,
-    name_cat: string,
-    state: number,
+    idcat: number|any,
+    name_cat: string|any,
+    state: number|any,
 }
 
-
-export interface ICategoryUpdate{
-    name_cat: string,
-    state: number,
-}
-
-export interface ICategoryGet{
-    idcat: number | undefined,
-    name_cat: string | undefined,
-    state: number| undefined,
-}
 

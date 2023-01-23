@@ -1,5 +1,5 @@
 import Category from "../entities/Category";
-import { ICategory, ICategoryGet, ICategoryUpdate } from "../Interfaces/ICategory";
+import { ICategory } from "../Interfaces/ICategory";
 
 class CategoryService{
     /*Metodo para Agregar datos en la tabla */ 
@@ -23,7 +23,7 @@ class CategoryService{
 
     public async getServiceOneCategory(idcat:number){
         const category =  await Category.findOneBy({idcat: idcat});
-        let respuesta: ICategoryGet = {
+        let respuesta: ICategory = {
             idcat: category?.idcat,
             name_cat: category?.name_cat,
             state: category?.state,
@@ -31,7 +31,7 @@ class CategoryService{
         return respuesta;
     }
 
-    public async UpdateServiceCategory(idcat:number,reqBody:ICategoryUpdate){
+    public async UpdateServiceCategory(idcat:number,reqBody:ICategory){
         const categorys = await Category.findOneBy({ idcat:idcat });
 
         if(!categorys) return Promise.reject("No hay Categoria");
