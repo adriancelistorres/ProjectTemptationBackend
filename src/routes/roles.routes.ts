@@ -6,10 +6,10 @@ const rolescontroller = new RolesController;
 
 const router = Router();
 
-router.post("/roles",rolescontroller.addRoles);
+router.post("/role",rolescontroller.addRoles);
 router.get("/roles",rolescontroller.getRoles);
-router.get("/roles/:idrol",rolescontroller.getOneRol);
-router.put("/roles/:idrol",rolescontroller.updateRoles);
-router.delete("/roles/:idrol",rolescontroller.deleteRoles);
+router.get("/role/:idrol",rolescontroller.getOneRol);
+router.put("/role/:idrol",rolescontroller.updateRoles);
+router.delete("/role/:idrol",rolescontroller.deleteRoles);
 
 export default router
