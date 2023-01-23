@@ -1,4 +1,4 @@
-import { IRoles, IRolesUpdate } from "../Interfaces/IRoles";
+import { IRoles} from "../Interfaces/IRoles";
 import{Request, Response} from "express";
 import RolService from "../services/rol.service";
 
@@ -51,7 +51,7 @@ class RolesController{
     public async updateRoles(req: Request, res:Response){
         try {
             const idrol: number = parseInt(req.params.idrol);
-            const reqBody: IRolesUpdate = req.body;
+            const reqBody: IRoles = req.body;
             const service = new RolService();
             const result = await service.updateRoles(idrol,reqBody);
             return res.json(result)
@@ -79,11 +79,7 @@ class RolesController{
                 return res.status(500).json({ message: error.message });
             }
         }
-    }
-    
-
-
-
+    }  
 }
 
 

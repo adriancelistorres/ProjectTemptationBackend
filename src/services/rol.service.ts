@@ -1,5 +1,5 @@
 import Roles from "../entities/Roles";
-import { IRoles, IRolesUn, IRolesUpdate } from "../Interfaces/IRoles";
+import { IRoles } from "../Interfaces/IRoles";
 
 class RolService{
     public async addRol(reqBody: IRoles){
@@ -23,7 +23,7 @@ class RolService{
     public async getOneRole(idrol:number){
         //Obtenemos el 'id' del rol que vamos a obtener 
         const rol = await Roles.findOneBy({idrol: idrol});
-        let respuesta: IRolesUn = {
+        let respuesta: IRoles = {
             idrol: rol?.idrol,
             namerol: rol?.namerol,
             state:rol?.state
@@ -31,7 +31,7 @@ class RolService{
         return respuesta;
     }
 
-    public async updateRoles(idrol:number, reqBody: IRolesUpdate){
+    public async updateRoles(idrol:number, reqBody: IRoles){
         const roles = await Roles.findOneBy({
             idrol:idrol
         });
