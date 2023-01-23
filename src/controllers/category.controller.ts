@@ -30,7 +30,7 @@ class CategoryController{
         }
     }
 
-    public async getCategoryOne(req: Request, res: Response){
+    public async getOneCategory(req: Request, res: Response){
         try {
             let idcat:number = parseInt(req.params.idcat) 
             const service =  new CategoryService();
@@ -57,6 +57,20 @@ class CategoryController{
             console.log(error.message);
             return res.status(500).json({message: error.message})
            }
+        }
+    }
+
+    public async deleteCategory(req: Request, res: Response){
+        try {
+            const idcat: number = parseInt(req.params.idcat);
+            const service =  new CategoryService();
+            const result =  await service.DeleteServiceCategory(idcat);
+            return res.json(result); 
+        } catch (error) {
+            if(error instanceof Error){
+                console.log(error.message);
+                return res.status(500).json({message: error.message})
+               }
         }
     }
 }
