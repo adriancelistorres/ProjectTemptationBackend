@@ -11,6 +11,7 @@ import colorRouter from "./routes/color.routes";
 import brandRouter from "./routes/brand.routes";
 import siceRouter from "./routes/size.routes"
 import providerRouter from "./routes/provider.routes";
+import styleRouter from "./routes/style.routes";
 
 
 
@@ -21,6 +22,6 @@ app.use(cors());
 app.use(express.json());
 
 
-app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter);
+app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter,styleRouter);
 
 export default app;

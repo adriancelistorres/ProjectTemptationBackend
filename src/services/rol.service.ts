@@ -40,7 +40,7 @@ class RolService{
         //SI NO HAY NINGUN ROL O ES NULL
         if(!roles) 
         //RETORNA UN ERROR CON EL MENSAJE "NO HAY ROL"
-        return Promise.reject("NO HAY ROLES")
+        return Promise.reject("NO HAY ESE ROL")
         //DE LO CONTRARIO SE ACTUALIZARÁ
         //Igualamos los atributos de la entidad 'roles' CON las entidades del reqBody que toma de la interfaz 'IRoles'
         roles.namerol = reqBody.namerol;
