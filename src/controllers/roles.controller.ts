@@ -3,6 +3,7 @@ import{Request, Response} from "express";
 import RolService from "../services/rol.service";
 
 class RolesController{
+    //OBLIGATORIO COLOCAR Request -  Response COMO PARAMETROS DE LOS METODOS ASINCRONOS
     public async addRoles(req:Request, res:Response){
         try{
             const reqBody :IRoles = req.body;
@@ -18,7 +19,7 @@ class RolesController{
         }
     }
 
-    //OBLIGATORIO COLOCAR Request -  Response
+    //OBLIGATORIO COLOCAR Request -  Response COMO PARAMETROS DE LOS METODOS ASINCRONOS
     public async getRoles(req: Request ,res: Response){
         try {
             const service = new RolService();
