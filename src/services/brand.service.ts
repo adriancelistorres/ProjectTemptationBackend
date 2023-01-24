@@ -1,4 +1,4 @@
-import Brand from "../entities/Brand";
+import Brand from "../entities/Brand"
 import { IBrand } from "../Interfaces/IBrand";
 
 class brandservice{
