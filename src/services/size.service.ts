@@ -2,7 +2,7 @@ import Brand from "../entities/Brand";
 import Size from "../entities/Size";
 import { ISize } from "../Interfaces/ISize";
 
-class sizeService{
+class SizeService{
     /*Metodo para Agregar un Tamano */
     public async addServiceSize(reqBody: ISize){
         const size =  new Size();
@@ -56,4 +56,4 @@ class sizeService{
      }
 
 }
-export default sizeService;
+export default SizeService;

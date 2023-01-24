@@ -1,7 +1,7 @@
 import Brand from "../entities/Brand"
 import { IBrand } from "../Interfaces/IBrand";
 
-class brandservice{
+class Brandservice{
     /*Metodo para Agregar una Marca */
     public async addServiceBrand(reqBody: IBrand){
         const brand =  new Brand();
@@ -60,4 +60,4 @@ class brandservice{
 
 }
 
-export default brandservice;
+export default Brandservice;
