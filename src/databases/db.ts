@@ -1,6 +1,5 @@
 import { DataSource } from "typeorm";
 import { DB_HOST, DB_USER, DB_PORT,DB_PASSWORD, DB_DATABASE } from '../config/config';
-import Brand from "../entities/Brand";
 import Category from "../entities/Category";
 import Person from "../entities/Person";
 import Roles from "../entities/Roles";
@@ -16,7 +15,9 @@ export const AppDataSource = new DataSource({
   database: DB_DATABASE,
   // synchronize: true,
   logging: false,
-  entities: [Roles,Person,Category,Brand,Size],
+
+  entities: [Roles,Person,Category,Size],
+
   subscribers: [],
   migrations: [],
 });
