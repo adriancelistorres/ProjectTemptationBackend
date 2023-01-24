@@ -21,8 +21,8 @@ class sizeService{
         return respuesta;
     }
     /*Metodo para Obtener un tamano en especifico */
-    public async getServiceOneSize(idsize: number){
-        const 
-    }
+    // public async getServiceOneSize(idsize: number){
+    //     const 
+    // }
 }
 export default sizeService;
