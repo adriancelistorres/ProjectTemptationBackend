@@ -11,6 +11,8 @@ class RolService{
     }
 
     public async getRol(){
+        //EL ':' SE UTILIZA PARA ASIGNAR UN TIPO DE DATO(YA SEA 'string','number','boolean',etc) A UNA VARIABLE.
+        //QUE EN ESTE CASO, LA VARIABLE 'respuesta' SEA UN ARRAY DE TIPO 'IRoles'.
         let respuesta : IRoles[] = [];
         const roles = await Roles.find();
         roles.map((c) =>{
@@ -40,7 +42,7 @@ class RolService{
         //RETORNA UN ERROR CON EL MENSAJE "NO HAY ROL"
         return Promise.reject("NO HAY ROLES")
         //DE LO CONTRARIO SE ACTUALIZARÁ
-        //Igualamos los atributos de la entidad 'roles' CON las entidades en el reqBody que se encuentra en la interfaz 'IRolesUpdate'
+        //Igualamos los atributos de la entidad 'roles' CON las entidades del reqBody que toma de la interfaz 'IRoles'
         roles.namerol = reqBody.namerol;
         roles.state = reqBody.state;
 
