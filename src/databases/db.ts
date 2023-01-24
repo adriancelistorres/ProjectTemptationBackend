@@ -6,6 +6,8 @@ import Person from "../entities/Person";
 import Roles from "../entities/Roles";
 import Size from "../entities/Size";
 import Brand from "../entities/Brand";
+import Provider from "../entities/Provider";
+import PaymentMethod from "../entities/PaymentMethod";
 
 const PORT:any=DB_PORT
 export const AppDataSource = new DataSource({
@@ -19,7 +21,7 @@ export const AppDataSource = new DataSource({
   logging: false,
 
 
-  entities: [Roles,Person,Category,Size,Color,Brand],
+  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod],
   subscribers: [],
   migrations: [],
 });
