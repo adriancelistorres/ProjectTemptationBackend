@@ -59,6 +59,20 @@ class CategoryController{
            }
         }
     }
+
+    public async deleteCategory (req: Request, res: Response){
+        try {
+            const idcat: number =  parseInt(req.params.idcat);
+            const service =  new CategoryService();
+            const result =  await service.deleteServiceCategory(idcat);
+            return res.json(result);
+        } catch (error) {
+            if(error instanceof Error){
+                console.log(error.message);
+                return res.status(500).json({nessage: error.message})
+            }
+        }
+    }
 }
 
 

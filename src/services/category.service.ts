@@ -11,6 +11,7 @@ class CategoryService{
         return await category.save();
     }
 
+    /*Metodo para Obtener todas las categorias */
     public async getServiceCategory(){
         let respuesta: ICategory[] = ([] = []);
         const category =  await Category.find();
@@ -21,6 +22,7 @@ class CategoryService{
         return respuesta;
     }
 
+    /*Metodo para Obtener una categoria  */
     public async getServiceOneCategory(idcat:number){
         const category =  await Category.findOneBy({idcat: idcat});
         let respuesta: ICategory = {
@@ -31,6 +33,7 @@ class CategoryService{
         return respuesta;
     }
 
+/*Metodo para Actualizar una Categoria */
     public async UpdateServiceCategory(idcat:number,reqBody:ICategory){
         const categorys = await Category.findOneBy({ idcat:idcat });
 
@@ -42,6 +45,17 @@ class CategoryService{
         categorys.save();
 
         return categorys;
+    }
+    /**Metodo para Eliminar una categoria */
+    public async deleteServiceCategory(idcat: number){
+        const category = await Category.findOneBy({idcat:idcat});
+        if(!category){
+            return Promise.reject("No existe esa Categoria");
+        }else{
+            category.state = 0;
+            category.save();
+            return category
+        }
     }
 
 
