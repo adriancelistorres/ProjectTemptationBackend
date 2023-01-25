@@ -25,7 +25,6 @@ class LoginController {
               idrol:result?.idrol,
               username:result?.username,
               password:result?.password,
-
             },process.env.SECRET_KEY||'pepe')
             return res.json(token);
           } else {
