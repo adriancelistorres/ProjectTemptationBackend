@@ -8,11 +8,10 @@ import Size from "../entities/Size";
 import Brand from "../entities/Brand";
 import Provider from "../entities/Provider";
 import PaymentMethod from "../entities/PaymentMethod";
-<<<<<<< HEAD
+
 import Products from "../entities/PaymentMethod";
-=======
+
 import Styles from "../entities/Styles";
->>>>>>> a37c3c97921a543b2f83724f6863e81f976705ac
 
 const PORT:any=DB_PORT
 export const AppDataSource = new DataSource({
@@ -24,8 +23,6 @@ export const AppDataSource = new DataSource({
   database: DB_DATABASE,
   // synchronize: true,
   logging: false,
-
-
   entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles],
   subscribers: [],
   migrations: [],

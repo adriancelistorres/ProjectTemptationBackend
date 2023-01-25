@@ -3,7 +3,7 @@ import { IValidateToken } from "../Interfaces/IValidate";
 import jwt from "jsonwebtoken";
 
 class ValidateTokenService {
-  public async validate(req: Request, res: Response, next: NextFunction) {
+  public async validate(req: any, res: any, next: any) {
     const headerToken = req.headers["authorization"];
     if (headerToken != undefined && headerToken.startsWith("Bearer ")) {
       try {
