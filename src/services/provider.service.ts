@@ -1,5 +1,4 @@
 import Provider from "../entities/Provider";
-import Brand from "../entities/Provider"
 import { IProvider } from "../Interfaces/IProvider";
 
 class Providerservice{
@@ -70,7 +69,7 @@ class Providerservice{
 
      /*Metodo para Eliminar un provevedor */
      public async deleteServiceProvider(idprovider: number){
-        const prov = await Brand.findOneBy({idprovider: idprovider});
+        const prov = await Provider.findOneBy({idprovider: idprovider});
         if(!prov){
             return Promise.reject("No existe Proveedor")
         }else{
