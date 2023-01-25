@@ -26,7 +26,7 @@ class LoginController {
               username:result?.username,
               password:result?.password,
             },process.env.SECRET_KEY||'pepe')
-            return res.json(token);
+            return res.json({token:token});
           } else {
             return res.jsonp("contraseña incorrecta");
           }
