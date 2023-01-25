@@ -8,6 +8,7 @@ import Size from "../entities/Size";
 import Brand from "../entities/Brand";
 import Provider from "../entities/Provider";
 import PaymentMethod from "../entities/PaymentMethod";
+import Products from "../entities/PaymentMethod";
 
 const PORT:any=DB_PORT
 export const AppDataSource = new DataSource({
