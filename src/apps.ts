@@ -2,7 +2,7 @@ import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import loginRoutes from "./routes/login.routes";
-import personRoutes from"./routes/person.routes"
+import personRoutes from"./routes/person.routes";
 import categoryRoutes from "./routes/category.routes";
 import rolesRouter from "./routes/roles.routes";
 import colorRouter from "./routes/color.routes";
