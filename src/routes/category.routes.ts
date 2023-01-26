@@ -8,9 +8,9 @@ import ValidateToken from "../controllers/validate-token.controller";
  const router =  Router();
 
  router.post("/category", validatetoken.Token,categorycontroller.addCategory);
- router.get("/categorys", categorycontroller.getCategory);
- router.get("/category/:idcat", categorycontroller.getCategoryOne);
- router.put("/category/:idcat", categorycontroller.updateCatgory);
- router.delete("/category/:idcat", categorycontroller.deleteCategory);
+ router.get("/categorys",validatetoken.Token, categorycontroller.getCategory);
+ router.get("/category/:idcat",validatetoken.Token, categorycontroller.getCategoryOne);
+ router.put("/category/:idcat",validatetoken.Token, categorycontroller.updateCatgory);
+ router.delete("/category/:idcat",validatetoken.Token, categorycontroller.deleteCategory);
 
  export default router;

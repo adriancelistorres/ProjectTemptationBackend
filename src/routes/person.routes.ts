@@ -1,8 +1,12 @@
 import { Router } from "express";
 
 import PersonController from "../controllers/person.controller";
+import ValidateToken from "../controllers/validate-token.controller";
 
 const person = new PersonController();
+const validatetoken =  new ValidateToken;
+
+
 const router = Router();
 
 router.post("/addperson", person.addPerson);
