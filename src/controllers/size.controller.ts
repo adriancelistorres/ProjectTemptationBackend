@@ -49,7 +49,7 @@ class SizeController{
             const idsize: number =  parseInt(req.params.idsize);
             const resBody: ISize =  req.body;
             const service = new sizeService();
-            const result = await service.UpdateServiceSize(idsize,resBody);
+            const result = await service.updateServiceSize(idsize,resBody);
             return res.json(result);
         } catch (error) {
             if(error instanceof Error){

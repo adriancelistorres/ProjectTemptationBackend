@@ -9,7 +9,7 @@ import ValidateToken from "../controllers/validate-token.controller";
 
  router.post("/category", validatetoken.Token,categorycontroller.addCategory);
  router.get("/categorys",validatetoken.Token, categorycontroller.getCategory);
- router.get("/category/:idcat",validatetoken.Token, categorycontroller.getCategoryOne);
+ router.get("/category/:idcat",validatetoken.Token, categorycontroller.getOneCategory);
  router.put("/category/:idcat",validatetoken.Token, categorycontroller.updateCatgory);
  router.delete("/category/:idcat",validatetoken.Token, categorycontroller.deleteCategory);
 

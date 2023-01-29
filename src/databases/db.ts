@@ -8,6 +8,9 @@ import Size from "../entities/Size";
 import Brand from "../entities/Brand";
 import Provider from "../entities/Provider";
 import PaymentMethod from "../entities/PaymentMethod";
+import Order from "../entities/Order";
+import SaleDetail from "../entities/Sale_Detail";
+
 
 
 /*import Products from "../entities/Products";*/
@@ -26,7 +29,7 @@ export const AppDataSource = new DataSource({
   database: DB_DATABASE,
   // synchronize: true,
   logging: false,
-  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles],
+  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles,Order,SaleDetail],
   subscribers: [],
   migrations: [],
 });

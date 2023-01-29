@@ -32,7 +32,7 @@ class SizeService{
         return respues;
      }
      /*Metodo para Actualizar una tamano */
-     public async UpdateServiceSize(idsize:number, reqBody: ISize){
+     public async updateServiceSize(idsize:number, reqBody: ISize){
         const size = await Size.findOneBy({idsize:idsize});
         if(!size) return Promise.reject("No hay tamano ");
 

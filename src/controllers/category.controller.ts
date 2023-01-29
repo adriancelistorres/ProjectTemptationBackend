@@ -30,7 +30,7 @@ class CategoryController{
         }
     }
 
-    public async getCategoryOne(req: Request, res: Response){
+    public async getOneCategory(req: Request, res: Response){
         try {
             let idcat:number = parseInt(req.params.idcat) 
             const service =  new CategoryService();
@@ -49,7 +49,7 @@ class CategoryController{
             const idcat:number =  parseInt(req.params.idcat);
             const resBody:ICategory =  req.body;
             const service= new CategoryService();
-            const resulta =  await service.UpdateServiceCategory(idcat,resBody);
+            const resulta =  await service.updateServiceCategory(idcat,resBody);
             return res.json(resulta);
 
         } catch (error) {

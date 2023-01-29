@@ -10,7 +10,7 @@ const router =  Router();
 
 router.post("/brand",validatetoken.Token,brandcontroller.addBrand);
 router.get("/brands",validatetoken.Token,brandcontroller.getBrand);
-router.get("/brand/:idbrand",validatetoken.Token,brandcontroller.getOneCategory);
+router.get("/brand/:idbrand",validatetoken.Token,brandcontroller.getOneBrand);
 router.put("/brand/:idbrand",validatetoken.Token,brandcontroller.UpdateBrand);
 router.delete("/brand/:idbrand",validatetoken.Token,brandcontroller.deleteBrand);
 
