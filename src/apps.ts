@@ -10,7 +10,7 @@ import brandRouter from "./routes/brand.routes";
 import siceRouter from "./routes/size.routes"
 import providerRouter from "./routes/provider.routes";
 import paymentmethodRouter from "./routes/paymentmethod.routes";
-
+import incomeRouter from "./routes/income.routes";
 
 import styleRouter from "./routes/style.routes";
 
@@ -25,7 +25,7 @@ app.use(express.json());
 
 
 
-app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter,styleRouter,paymentmethodRouter);
+app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter,styleRouter,paymentmethodRouter,incomeRouter);
 
 
 export default app;
