@@ -30,7 +30,7 @@ class BrandController{
         }
     }
 
-    public async getOneCategory(req: Request, res: Response){
+    public async getOneBrand(req: Request, res: Response){
         try {
             let idbrand: number = parseInt(req.params.idbrand)
             const service =  new brandservice();
@@ -49,13 +49,13 @@ class BrandController{
             const idcat: number =  parseInt(req.params.idbrand);
             const resBody:IBrand = req.body;
             const service = new brandservice();
-            const result = await service.UpdateServiceBrand(idcat,resBody);
+            const result = await service.updateServiceBrand(idcat,resBody);
             return res.json(result)
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message);
                 return res.status(500).json({message: error.message})
-               }
+            }
         }
     }
 

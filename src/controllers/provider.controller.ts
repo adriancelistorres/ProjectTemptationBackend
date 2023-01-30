@@ -32,7 +32,7 @@ class ProviderController{
 
     public async getOneProvider(req: Request, res: Response){
         try {
-            let idprovider: number = parseInt(req.params.idprovider)
+            let idprovider: number = parseInt(req.params.idprovider);
             const service =  new Providerservice();
             const result =  await service.getServiceOneProvider(idprovider);
             return res.json(result);

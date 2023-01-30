@@ -34,7 +34,7 @@ class CategoryService{
     }
 
 /*Metodo para Actualizar una Categoria */
-    public async UpdateServiceCategory(idcat:number,reqBody:ICategory){
+    public async updateServiceCategory(idcat:number,reqBody:ICategory){
         const categorys = await Category.findOneBy({ idcat:idcat });
 
         if(!categorys) return Promise.reject("No hay Categoria");

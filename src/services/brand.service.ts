@@ -34,7 +34,7 @@ class Brandservice{
      }
 
      /* Metodo para actualizar una marca */
-     public async UpdateServiceBrand(idbrand:number, reqBody:IBrand){
+     public async updateServiceBrand(idbrand:number, reqBody:IBrand){
         const brand = await Brand.findOneBy({idbrand:idbrand});
 
         if(!brand) return Promise.reject("No hay Marca");
