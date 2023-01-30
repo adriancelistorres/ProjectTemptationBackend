@@ -46,7 +46,7 @@ class IncomeService{
         return income;
     }
 
-    public async deleteServiceProvider(idicome: number){
+    public async deleteServiceIncome(idicome: number){
         const income = await Income.findOneBy({idicome: idicome});
         if(!income){
             return Promise.reject("No existe Ingreso")

@@ -57,7 +57,7 @@ class IncomeController{
             if(error instanceof Error){
                 console.log(error.message);
                 return res.status(500).json({message: error.message})
-               }
+            }
         }
     }
 
@@ -65,7 +65,7 @@ class IncomeController{
         try {
             const idicome: number =  parseInt(req.params.idicome);
             const service =  new IncomeService();
-            const result =  await service.deleteServiceProvider(idicome);
+            const result =  await service.deleteServiceIncome(idicome);
             return res.json(result);
         } catch (error) {
             if(error instanceof Error){

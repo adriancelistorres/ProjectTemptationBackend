@@ -8,13 +8,11 @@ import Size from "../entities/Size";
 import Brand from "../entities/Brand";
 import Provider from "../entities/Provider";
 import PaymentMethod from "../entities/PaymentMethod";
-<<<<<<< HEAD
 import Income from "../entities/Income";
-=======
 import Order from "../entities/Order";
 import SaleDetail from "../entities/Sale_Detail";
+import DetailIncome from "../entities/DetailIncome";
 
->>>>>>> ded113645aa8569f02dfb285275a917230fb4ada
 
 
 /*import Products from "../entities/Products";*/
@@ -33,11 +31,10 @@ export const AppDataSource = new DataSource({
   database: DB_DATABASE,
   // synchronize: true,
   logging: false,
-<<<<<<< HEAD
-  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles,Income],
-=======
-  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles,Order,SaleDetail],
->>>>>>> ded113645aa8569f02dfb285275a917230fb4ada
+
+  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles,Income,Order,SaleDetail,DetailIncome],
+
+
   subscribers: [],
   migrations: [],
 });
