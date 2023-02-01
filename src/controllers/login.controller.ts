@@ -28,11 +28,15 @@ class LoginController {
             },process.env.SECRET_KEY||'pepe')
             return res.json({token:token});
           } else {
-            return res.jsonp("contraseña incorrecta");
+            return res.status(400).json({
+              msg: `contraseña incorrecta`
+          })
           }
         });
       } else {
-        return res.jsonp("usuario no encontrado");
+        return res.status(400).json({
+          msg: `usuario no encontrado`
+      })
       }
     } catch (error) {
       if (error instanceof Error) {
