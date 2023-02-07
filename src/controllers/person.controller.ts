@@ -59,7 +59,7 @@ class PersonController{
             const idperson: number =  parseInt(req.params.idperson);
             const resBody:IPerson = req.body;
             const service = new PersonService();
-            const result = await service.UpdateServiceProvider(idperson,resBody);
+            const result = await service.UpdateServicePerson(idperson,resBody);
             return res.json(result)
         } catch (error) {
             if(error instanceof Error){
@@ -75,7 +75,7 @@ class PersonController{
         try {
             const idperson: number =  parseInt(req.params.idperson);
             const service =  new PersonService();
-            const result =  await service.deleteServiceProvider(idperson);
+            const result =  await service.deleteServicePerson(idperson);
             return res.json(result);
         } catch (error) {
             if(error instanceof Error){

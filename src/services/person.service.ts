@@ -81,7 +81,7 @@ class PersonService {
   }
 
   /* Metodo para actualizar un provevedor */
-  public async UpdateServiceProvider(idperson: number, reqBody: IPerson) {
+  public async UpdateServicePerson(idperson: number, reqBody: IPerson) {
     const person = await Person.findOneBy({ idperson: idperson });
 
     if (!person) return Promise.reject("No se encontro Persona");
@@ -101,7 +101,7 @@ class PersonService {
   }
 
   /*Metodo para Eliminar un provevedor */
-  public async deleteServiceProvider(idperson: number) {
+  public async deleteServicePerson(idperson: number) {
     const person = await Person.findOneBy({ idperson: idperson });
     if (!person) {
       return Promise.reject("No existe Persona");

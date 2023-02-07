@@ -12,6 +12,7 @@ import Income from "../entities/Income";
 import Order from "../entities/Order";
 import SaleDetail from "../entities/Sale_Detail";
 import DetailIncome from "../entities/DetailIncome";
+import Products from "../entities/Products";
 
 
 
@@ -32,7 +33,7 @@ export const AppDataSource = new DataSource({
   // synchronize: true,
   logging: false,
 
-  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles,Income,Order,SaleDetail,DetailIncome],
+  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles,Income,Order,SaleDetail,DetailIncome,Products],
 
 
   subscribers: [],

@@ -13,7 +13,8 @@ import paymentmethodRouter from "./routes/paymentmethod.routes";
 import incomeRouter from "./routes/income.routes";
 import orderRouter from "./routes/order.routes";
 import saledetailRouter from "./routes/saledetail.routes";
-import detailIncomeRouter from "./routes/detailincome.routes"
+import detailIncomeRouter from "./routes/detailincome.routes";
+import productsRouter from "./routes/products.routes";
 
 import styleRouter from "./routes/style.routes";
 
@@ -26,6 +27,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter,styleRouter,
-    paymentmethodRouter,orderRouter,saledetailRouter,incomeRouter,detailIncomeRouter);
+    paymentmethodRouter,orderRouter,saledetailRouter,incomeRouter,detailIncomeRouter,productsRouter);
 
 export default app;
