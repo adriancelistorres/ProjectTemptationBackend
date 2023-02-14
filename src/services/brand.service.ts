@@ -11,13 +11,13 @@ class Brandservice {
         .from(Brand, "brand")
         .where("brand.name_brand = :name_brand", { name_brand })
         .getOne();
-      if ( data?.name_brand!=reqBody.name_brand ) {
+      if (data?.name_brand != reqBody.name_brand) {
         const brand = new Brand();
         brand.idbrand = reqBody.idbrand;
         brand.name_brand = reqBody.name_brand;
         brand.state = reqBody.state;
         brand.save();
-        return  data
+        return data;
       } else {
         return data;
       }
@@ -64,9 +64,8 @@ class Brandservice {
         .from(Brand, "brand")
         .where("brand.name_brand = :name_brand", { name_brand })
         .getOne();
-      if (data?.name_brand == reqBody.name_brand) {
-        return "Marca ya actualizada";
-      } else {
+
+      if (data?.name_brand != reqBody.name_brand) {
         const brand = await Brand.findOneBy({ idbrand: idbrand });
 
         if (!brand) return Promise.reject("No hay Marca");
@@ -75,7 +74,9 @@ class Brandservice {
         brand.state = reqBody.state;
 
         brand.save();
-        return brand;
+        return data;
+      } else {
+        return data;
       }
     } catch (error) {
       return Promise.reject(" does not update ");

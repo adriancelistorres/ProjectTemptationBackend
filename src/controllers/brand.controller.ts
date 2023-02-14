@@ -61,7 +61,16 @@ class BrandController{
             const resBody:IBrand = req.body;
             const service = new brandservice();
             const result = await service.updateServiceBrand(resBody.name_brand,idcat,resBody);
-            return res.json(result)
+            // return res.json(result)
+            if(result?.name_brand===resBody.name_brand){
+                return res.status(400).json({
+                    msg: `Ya se agrego anteriormente`,
+                  })}
+            else{
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                  })
+            }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message);
