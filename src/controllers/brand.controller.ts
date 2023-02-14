@@ -8,7 +8,18 @@ class BrandController{
             const reqBody: IBrand =  req.body;
             const service = new brandservice();
             const result =  await service.addServiceBrand(reqBody.name_brand,reqBody);
-            return res.json(result);
+            // return res.json(result);
+            if(result?.name_brand===reqBody.name_brand){
+                return res.status(400).json({
+                    msg: `Ya se agrego anteriormente`,
+                  })}
+            else{
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                  })
+            }
+          
+           
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message)
