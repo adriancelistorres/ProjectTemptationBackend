@@ -7,7 +7,7 @@ class BrandController{
         try {
             const reqBody: IBrand =  req.body;
             const service = new brandservice();
-            const result =  await service.addServiceBrand(reqBody);
+            const result =  await service.addServiceBrand(reqBody.name_brand,reqBody);
             return res.json(result);
         } catch (error) {
             if(error instanceof Error){
@@ -49,7 +49,7 @@ class BrandController{
             const idcat: number =  parseInt(req.params.idbrand);
             const resBody:IBrand = req.body;
             const service = new brandservice();
-            const result = await service.updateServiceBrand(idcat,resBody);
+            const result = await service.updateServiceBrand(resBody.name_brand,idcat,resBody);
             return res.json(result)
         } catch (error) {
             if(error instanceof Error){

@@ -1,14 +1,29 @@
+import { AppDataSource } from "../databases/db";
 import Brand from "../entities/Brand"
 import { IBrand } from "../Interfaces/IBrand";
 
 class Brandservice{
     /*Metodo para Agregar una Marca */
-    public async addServiceBrand(reqBody: IBrand){
-        const brand =  new Brand();
-        brand.idbrand = reqBody.idbrand;
-        brand.name_brand =  reqBody.name_brand;
-        brand.state =  reqBody.state
-        return await brand.save();
+    public async addServiceBrand(name_brand:string, reqBody: IBrand){
+        try{
+            const data = await AppDataSource.createQueryBuilder()
+            .select("brand")
+            .from(Brand, "brand")
+            .where("brand.name_brand = :name_brand", { name_brand })
+            .getOne();
+            if (data?.name_brand == reqBody.name_brand) {
+                return "Marca ya registrada";
+            }else{
+                const brand =  new Brand();
+                brand.idbrand = reqBody.idbrand;
+                brand.name_brand =  reqBody.name_brand;
+                brand.state =  reqBody.state
+                return await brand.save();
+            }
+        }catch(error){
+            return Promise.reject(" does not exist ");
+        }
+
     }
 
     /*Metodo para Obtener todas marcas */
@@ -34,16 +49,29 @@ class Brandservice{
      }
 
      /* Metodo para actualizar una marca */
-     public async updateServiceBrand(idbrand:number, reqBody:IBrand){
-        const brand = await Brand.findOneBy({idbrand:idbrand});
+     public async updateServiceBrand(name_brand: string, idbrand:number, reqBody:IBrand){
+        try {
+            const data =  await AppDataSource.createQueryBuilder()
+            .select("brand")
+            .from(Brand, "brand")
+            .where("brand.name_brand = :name_brand", {name_brand})
+            .getOne();
+            if (data?.name_brand == reqBody.name_brand) {
+                return "Marca ya actualizada"
+            }else {
+                const brand = await Brand.findOneBy({idbrand:idbrand});
 
-        if(!brand) return Promise.reject("No hay Marca");
-
-        brand.name_brand = reqBody.name_brand;
-        brand.state = reqBody.state;
-
-        brand.save();
-        return brand;
+                if(!brand) return Promise.reject("No hay Marca");
+        
+                brand.name_brand = reqBody.name_brand;
+                brand.state = reqBody.state;
+        
+                brand.save();
+                return brand;
+            }
+        } catch (error) {
+            return Promise.reject(" does not update ");
+        }
      }
 
      /*Metodo para Eliminar una marca */
