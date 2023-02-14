@@ -62,6 +62,13 @@ class BrandController{
             const service = new brandservice();
             const result = await service.updateServiceBrand(resBody.name_brand,idcat,resBody);
             // return res.json(result)
+            if(result?.state!=resBody.state){
+                return res.status(200).json({
+                    msg: `activo`,
+                  })
+            }
+
+
             if(result?.name_brand===resBody.name_brand){
                 return res.status(400).json({
                     msg: `Ya se agrego anteriormente`,
