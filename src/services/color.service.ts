@@ -20,10 +20,13 @@ class ColorService{
                 colors.state = reqBody.state;
                 //ESPERA A QUE RETORNE TODO LO QUE SE GUARDE EN EL OBJETO 'colors'
                 colors.save();
+                console.log(JSON.stringify(data))
+                return data;
 
             }
             //DE LO CONTRARIO RETORNA LA CONSTANTE 'data'
             else{
+                console.log(JSON.stringify(data))
                 return data;
             }
         } catch (error)

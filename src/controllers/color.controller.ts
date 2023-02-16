@@ -13,15 +13,19 @@ class ColorController{
             //DEPENDIENDO DEL RESULTADO EN EL 'color.service', LA CONSTANTE 'result' ALMACENARA EL NUEVO COLOR Q SE HA AÑADIDO O ALMACENARA LA VARIABLE 'data' PORQUE HA SIDO RETORNADA DESDE 'color.service'
             
             const result = await service.addColor(reqBody.name_col,reqBody)
+            console.log("IMPRIMIENDO RESULT: "+result);//null
+            
             //CON LA VARIABLE 'result' PODEMOS ACCEDER A CUALQUIER PROPIEDAD DE TIPO 'Color'
             //SI EL NOMBRE DEL COLOR QUE SE ENCUENTRA ALMACENADO EN LA CONSTANTE 'result' ES IGUAL AL NOMBRE DEL COLOR QUE SE ENCUENTRA EN EL 'reqBody' DE TIPO INTERFAZ 'Icolor'.
+            //SI EL 'result' TRAE EL OBJETO AGREGADO ANTERIORMENTE ENTRA AL IF
             if (result?.name_col === reqBody.name_col) {
                 //RETORNA UN CODIGO DE ESTADO '400'(Bad Request) Y EN EL POSTMAN COLOCA UN MENSAJE EN FORMATO JSON
                 return res.status(400).json({
                     msg: `Ya se agrego anteriormente`,
                   })
             } 
-            //DE LO CONTRARIO, RETORNA UN CODIGO DE ESTADO '200'(ok), Y  EN EL POSTMAN COLOCA UN MENSAJE EN FORMATO JSON          
+            //DE LO CONTRARIO, RETORNA UN CODIGO DE ESTADO '200'(ok), Y  EN EL POSTMAN COLOCA UN MENSAJE EN FORMATO JSON
+            //SI EL 'result' ES NULL INGRESARÁ AL ELSE      
             else {
                 return res.status(200).json({
                     msg: `Se agrego correctamente`,
