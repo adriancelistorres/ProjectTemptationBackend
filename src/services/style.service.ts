@@ -1,13 +1,26 @@
+import { AppDataSource } from "../databases/db";
 import Styles from "../entities/Styles";
 import { IStyles } from "../Interfaces/IStyles";
 
 class StyleService{
-    public async addStyle(reqBody: IStyles){
-        const styles = new Styles();
-        styles.idstyles = reqBody.idstyles;
-        styles.name_sty = reqBody.name_sty;
-        styles.state = reqBody.state;
-        return await styles.save();
+    
+    public async addStyle(name_sty:string,reqBody: IStyles){
+        try {
+            const data = await AppDataSource.createQueryBuilder().select("color").from(Styles,"color").where("color.name_col = :name_col",{name_sty}).getOne();
+            if (data?.name_sty != reqBody.name_sty) {
+                const styles = new Styles();
+                styles.idstyles = reqBody.idstyles;
+                styles.name_sty = reqBody.name_sty;
+                styles.state = reqBody.state;
+                styles.save();
+                return data;
+            } else {
+                return data;
+            }
+        } catch (error) {
+            return Promise.reject(" does not exist ");
+        }
+        
     }
 
     public async getStyle(){
