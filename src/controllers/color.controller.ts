@@ -12,14 +12,21 @@ class ColorController{
             const service = new ColorService();
             
             const result = await service.addColor(reqBody.name_col,reqBody)
+
             
+
+            console.log("IMPRIMIENDO RESULT: "+result);//null
+            
+
             if (result?.name_col === reqBody.name_col) {
                 
                 return res.status(400).json({
                     msg: `Ya se agrego anteriormente`,
                   })
             } 
+
                
+
             else {
                 return res.status(200).json({
                     msg: `Se agrego correctamente`,

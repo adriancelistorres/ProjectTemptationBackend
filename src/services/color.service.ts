@@ -20,10 +20,13 @@ class ColorService{
                 colors.state = reqBody.state;
                
                 colors.save();
+                console.log(JSON.stringify(data))
+                return data;
 
             }
           
             else{
+                console.log(JSON.stringify(data))
                 return data;
             }
         } catch (error)
