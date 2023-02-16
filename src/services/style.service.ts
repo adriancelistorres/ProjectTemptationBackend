@@ -6,7 +6,7 @@ class StyleService{
     
     public async addStyle(name_sty:string,reqBody: IStyles){
         try {
-            const data = await AppDataSource.createQueryBuilder().select("color").from(Styles,"color").where("color.name_col = :name_col",{name_sty}).getOne();
+            const data = await AppDataSource.createQueryBuilder().select("style").from(Styles,"style").where("style.name_sty = :name_sty",{name_sty}).getOne();
             if (data?.name_sty != reqBody.name_sty) {
                 const styles = new Styles();
                 styles.idstyles = reqBody.idstyles;
