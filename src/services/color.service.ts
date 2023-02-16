@@ -1,18 +1,36 @@
+import { AppDataSource } from "../databases/db";
 import Color from "../entities/Color";
 import Roles from "../entities/Roles";
 import { IColor } from "../Interfaces/IColor";
 
 class ColorService{
     //METODO ASINCRONO PARA AÑADIR COLOR
-    public async addColor(reqBody:IColor){
-        //INSTANCIAMOS LA CLASE(ENTIDAD) 'Color'
-        const colors = new Color();
-         //Igualamos los atributos de la entidad 'colors' CON las entidades del reqBody que toma de la interfaz 'IColor'
-        colors.idcolor = reqBody.idcolor;
-        colors.name_col = reqBody.name_col;
-        colors.state = reqBody.state;
-        //ESPERA A QUE RETORNE TODO LO QUE SE GUARDE EN EL OBJETO 'colors'
-        return await colors.save();
+    public async addColor(name_col:string,reqBody:IColor){
+
+        try {
+            //LA CONSTANTE 'data' VA A ALMACENAR UNA CONSULTA SQL SELECCIONANDO UN COLOR CON SUS RESPECTIVAS PROPIEDADES DEPENDIENDO DE SU NOMBRE
+            const data = await AppDataSource.createQueryBuilder().select("color").from(Color,"color").where("color.name_col = :name_col",{name_col}).getOne();
+            //SI EL NOMBRE DEL COLOR ALMACENADO EN DATA ES DIFERENTE AL NOMBRE DEL COLOR QUE SE ENCUENTRA EN EL 'reqBody' DE TIPO INTERFAZ 'IColor'
+            if(data?.name_col != reqBody.name_col){
+                //INSTANCIAMOS LA CLASE(ENTIDAD) 'Color'
+                const colors = new Color();
+                //Igualamos los atributos de la entidad 'colors' CON las entidades del reqBody que toma de la interfaz 'IColor'
+                colors.idcolor = reqBody.idcolor;
+                colors.name_col = reqBody.name_col;
+                colors.state = reqBody.state;
+                //ESPERA A QUE RETORNE TODO LO QUE SE GUARDE EN EL OBJETO 'colors'
+                colors.save();
+
+            }
+            //DE LO CONTRARIO RETORNA LA CONSTANTE 'data'
+            else{
+                return data;
+            }
+        } catch (error)
+        {
+            return Promise.reject(" does not exist ");
+        }
+        
     }
 
     public async getColor(){
