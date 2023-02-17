@@ -52,8 +52,12 @@ class StyleService{
         const styles = await Styles.findOneBy({
             idstyles: idstyles
         });
-        if(!styles)
-        return Promise.reject("NO HAY ESE ESTILO")
+        const error ={
+            msg: "NO EXISTE ESE ESTILO"
+        }
+        if(!styles){
+            return error;
+        }
         styles.name_sty = reqBody.name_sty,
         styles.state = reqBody.state
 
@@ -65,16 +69,17 @@ class StyleService{
         const styles = await Styles.findOneBy({
             idstyles:idstyles
         });
-
+        const error ={
+            msg: "NO EXISTE ESE ESTILO"
+        }
         if(!styles){
-            return Promise.reject("NO HAY ESTILOS");
+            return error;
         }else{
 
             styles.state = 0;
             styles.save();
             return styles;
         }
-
 
     }
 
