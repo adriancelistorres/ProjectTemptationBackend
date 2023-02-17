@@ -49,32 +49,56 @@ class CategoryService{
     }
 
 /*Metodo para Actualizar una Categoria */
-    public async updateServiceCategory(idcat:number,reqBody:ICategory){
-        const categorys = await Category.findOneBy({ idcat:idcat });
-
-        if(!categorys) return Promise.reject("No hay Categoria");
-
-        categorys.name_cat = reqBody.name_cat;
-        categorys.state = reqBody.state;
+    public async updateServiceCategory(name_cat: string,idcat:number,reqBody:ICategory){
+        try {
+            const categorys = await Category.findOneBy({ idcat:idcat });
+            const data =  await AppDataSource.createQueryBuilder()
+            .select("category")
+            .from(Category, "category")
+            .where("category.name_cat = :name_cat",{name_cat})
+            .getOne();
+            if (data?.state != reqBody.state) {
+                if(!categorys) return Promise.reject("No hay Categoria");
         
-        categorys.save();
+                categorys.name_cat = reqBody.name_cat;
+                categorys.state = reqBody.state;
+                
+                categorys.save();
+        
+                return data;
+            } 
+            if (data?.name_cat != reqBody.name_cat) {
 
-        return categorys;
+                if(!categorys) return Promise.reject("No hay Categoria");
+        
+                categorys.name_cat = reqBody.name_cat;
+                categorys.state = reqBody.state;
+                
+                categorys.save();
+        
+                return data;
+            } else {
+                return data;
+            }
+        } catch (error) {
+            return Promise.reject(" does not update ");
+        }
     }
     /**Metodo para Eliminar una categoria */
     public async deleteServiceCategory(idcat: number){
         const category = await Category.findOneBy({idcat:idcat});
+        const error = {
+            msg: "NO EXISTE ESTA CATEGORIA"
+        }
+
         if(!category){
-            return Promise.reject("No existe esa Categoria");
+            return error
         }else{
             category.state = 0;
             category.save();
             return category
         }
     }
-
-
 }
-
 
 export default CategoryService
