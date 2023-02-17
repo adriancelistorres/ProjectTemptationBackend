@@ -62,22 +62,43 @@ class ColorService{
         return respuesta;
     }
 
-    public async updateColor(idcolor:number, reqBody:IColor){
-        const colors = await Color.findOneBy({
-            idcolor:idcolor
-        });
-        const error = {
-            msg: "NO EXISTE ESTE COLOR"
-        }
-        if(!colors){
-            return error;
-        }
+    public async updateColor(name_col: string,idcolor:number, reqBody:IColor){
 
-        colors.name_col = reqBody.name_col;
-        colors.state = reqBody.state;
+        try {
+            const data = await AppDataSource.createQueryBuilder()
+        .select("color")
+        .from(Color, "color")
+        .where("color.name_col = :name_col", { name_col })
+        .getOne();
 
-        colors.save();
-        return colors;
+        if (data?.state != reqBody.state) {
+            const color = await Color.findOneBy({ idcolor: idcolor });
+    
+            if (!color) return Promise.reject("No hay Color");
+    
+            color.name_col = reqBody.name_col;
+            color.state = reqBody.state;
+    
+            color.save();
+            return data;
+          }  
+          if (data?.name_col != reqBody.name_col) {
+            const brand = await Color.findOneBy({ idcolor: idcolor });
+    
+            if (!brand) return Promise.reject("No hay Color");
+    
+            brand.name_col = reqBody.name_col;
+            brand.state = reqBody.state;
+    
+            brand.save();
+            return data;
+          } else {
+            return data;
+          } 
+
+        } catch (error) {
+            return Promise.reject(" does not update ");
+        }
     }
     
     public async deleteColor(idcolor: number){
