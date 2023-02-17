@@ -96,8 +96,12 @@ class Brandservice {
   /*Metodo para Eliminar una marca */
   public async deleteServiceBrand(idbrand: number) {
     const brand = await Brand.findOneBy({ idbrand: idbrand });
+    const error = {
+      msg: "NO EXISTE ESE ESTILO",
+    };
+
     if (!brand) {
-      return Promise.reject("No existe una marca");
+      return error;
     } else {
       brand.state = 0;
       brand.save();
