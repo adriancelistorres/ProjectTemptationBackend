@@ -8,8 +8,17 @@ class PaymentmethodController{
         try {
             const reqBody: IPaymentMethod =  req.body;
             const service = new PaymentMethodservice();
-            const result =  await service.addServicePaymentMethod(reqBody);
-            return res.json(result);
+            const result =  await service.addServicePaymentMethod(reqBody.name_pay,reqBody);
+            //return res.json(result);
+            if (result?.name_pay === reqBody.name_pay) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anteriormente"
+                })
+            } else {
+                return res.status(200).json({
+                    msg:  "Se agrego correctamente"
+                })
+            }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message)
@@ -50,8 +59,21 @@ class PaymentmethodController{
             const idpay: number =  parseInt(req.params.idpay);
             const resBody:IPaymentMethod = req.body;
             const service = new PaymentMethodservice();
-            const result = await service.UpdateServicePaymentMethod(idpay,resBody);
-            return res.json(result)
+            const result = await service.UpdateServicePaymentMethod(resBody.name_pay,idpay,resBody);
+            //return res.json(result)
+            if(result?.state != resBody.state){
+
+            }
+            if (result?.name_pay === result?.name_pay) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anteriormente"
+                })
+            } else {
+                return res.status(200).json({
+                    msg: "Se actualizo correctamente"
+                })
+                
+            }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message);

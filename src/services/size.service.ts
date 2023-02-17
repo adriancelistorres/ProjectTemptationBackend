@@ -49,29 +49,24 @@ class SizeService{
      /*Metodo para Actualizar una tamano */
      public async updateServiceSize(name_size: string,idsize:number, reqBody: ISize){
         try {
+            const size = await Size.findOneBy({idsize:idsize});
             const data = await AppDataSource.createQueryBuilder()
             .select("size")
             .from(Size, "size")
             .where("size.name_size = :name_size",{name_size})
             .getOne();
             if (data?.state != reqBody.state) {
-                const size = await Size.findOneBy({idsize:idsize});
                 if(!size) return Promise.reject("No hay Tamaño ");
-        
                 size.name_size =  reqBody.name_size;
-                size.state = reqBody.state;
-        
+                size.state = reqBody.state;    
                 size.save();
                 return data;
             }
 
             if (data?.name_size != reqBody.name_size) {
-                const size = await Size.findOneBy({idsize:idsize});
                 if(!size) return Promise.reject("No hay Tamaño ");
-        
                 size.name_size =  reqBody.name_size;
                 size.state = reqBody.state;
-        
                 size.save();
                 return data;
             } else {
