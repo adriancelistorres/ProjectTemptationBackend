@@ -66,8 +66,12 @@ class ColorService{
         const colors = await Color.findOneBy({
             idcolor:idcolor
         });
-        if(!colors)
-        return Promise.reject("NO HAY COLORES");
+        const error = {
+            msg: "NO EXISTE ESTE COLOR"
+        }
+        if(!colors){
+            return error;
+        }
 
         colors.name_col = reqBody.name_col;
         colors.state = reqBody.state;
@@ -79,8 +83,11 @@ class ColorService{
     public async deleteColor(idcolor: number){
 
         const colors = await Color.findOneBy({idcolor:idcolor});
+        const error = {
+            msg: "NO EXISTE ESTE COLOR"
+        }
         if(!colors){
-            return Promise.reject("NO HAY COLORES")
+            return error;
         }else{
 
             colors.state = 0;
