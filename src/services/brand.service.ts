@@ -59,14 +59,13 @@ class Brandservice {
     reqBody: IBrand
   ) {
     try {
+      const brand = await Brand.findOneBy({ idbrand: idbrand });
       const data = await AppDataSource.createQueryBuilder()
         .select("brand")
         .from(Brand, "brand")
         .where("brand.name_brand = :name_brand", { name_brand })
         .getOne();
       if (data?.state != reqBody.state) {
-        const brand = await Brand.findOneBy({ idbrand: idbrand });
-
         if (!brand) return Promise.reject("No hay Marca");
 
         brand.name_brand = reqBody.name_brand;
@@ -76,8 +75,6 @@ class Brandservice {
         return data;
       }
       if (data?.name_brand != reqBody.name_brand) {
-        const brand = await Brand.findOneBy({ idbrand: idbrand });
-
         if (!brand) return Promise.reject("No hay Marca");
 
         brand.name_brand = reqBody.name_brand;
@@ -97,7 +94,7 @@ class Brandservice {
   public async deleteServiceBrand(idbrand: number) {
     const brand = await Brand.findOneBy({ idbrand: idbrand });
     const error = {
-      msg: "NO EXISTE ESE ESTILO",
+      msg: "NO EXISTE ESE MARCA",
     };
 
     if (!brand) {

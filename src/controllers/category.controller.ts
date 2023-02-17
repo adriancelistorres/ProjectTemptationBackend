@@ -60,9 +60,24 @@ class CategoryController{
             const idcat:number =  parseInt(req.params.idcat);
             const resBody:ICategory =  req.body;
             const service= new CategoryService();
-            const resulta =  await service.updateServiceCategory(idcat,resBody);
-            return res.json(resulta);
+            const resulta =  await service.updateServiceCategory(resBody.name_cat,idcat,resBody);
+            //return res.json(resulta);
 
+            if (resulta?.state != resBody.state) {
+                return res.status(200).json({
+                    msg: "activo"
+                })
+            }
+
+            if (resulta?.name_cat === resulta?.name_cat) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anteriormente"
+                })
+            } else {
+                return res.status(200).json({
+                    msg: "Se actualizo correctamente"
+                })
+            }
         } catch (error) {
            if(error instanceof Error){
             console.log(error.message);
