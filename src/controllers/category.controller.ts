@@ -7,8 +7,19 @@ class CategoryController{
         try{
             const reqBody: ICategory =  req.body;
             const service = new CategoryService();
-            const result =  await service.addServiceCategory(reqBody);
-            return res.json(result);
+            const result =  await service.addServiceCategory(reqBody.name_cat,reqBody);
+            //return res.json(result);
+            if (result?.name_cat===reqBody.name_cat) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anteriormente"
+                })
+            } else {
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                })
+                
+            }
+            
         }catch(error){
             if (error instanceof Error) {
                 console.log(error.message)

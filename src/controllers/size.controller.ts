@@ -7,8 +7,18 @@ class SizeController{
         try {
             const reqBody: ISize = req.body;
             const service =  new sizeService();
-            const result =  await service.addServiceSize(reqBody);
-            return res.json(result)
+            const result =  await service.addServiceSize(reqBody.name_size,reqBody);
+            //return res.json(result)
+            if (result?.name_size ===reqBody.name_size) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anterormete",
+                })
+            } else {
+                return res.status(200).json({
+                    msg: "Se agrego correctamente",
+                })
+                
+            }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message)

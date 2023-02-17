@@ -1,14 +1,29 @@
+import { AppDataSource } from "../databases/db";
 import Category from "../entities/Category";
 import { ICategory } from "../Interfaces/ICategory";
 
 class CategoryService{
     /*Metodo para Agregar datos en la tabla */ 
-    public async addServiceCategory(reqBody: ICategory){
-        const category =  new Category();
-        category.idcat =  reqBody.idcat;
-        category.name_cat = reqBody.name_cat;
-        category.state =  reqBody.state;
-        return await category.save();
+    public async addServiceCategory(name_cat: string,reqBody: ICategory){
+        try {
+            const data = await AppDataSource.createQueryBuilder()
+            .select("categoria")
+            .from(Category, "categoria")
+            .where("categoria.name_cat = :name_cat",{name_cat})
+            .getOne();
+            if (data?.name_cat != reqBody.name_cat) {
+                const category =  new Category();
+                category.idcat =  reqBody.idcat;
+                category.name_cat = reqBody.name_cat;
+                category.state =  reqBody.state;
+                category.save();
+                return data;
+            } else {
+                return data;
+            }
+        } catch (error) {
+            return Promise.reject(" does not exist ");
+        }
     }
 
     /*Metodo para Obtener todas las categorias */
