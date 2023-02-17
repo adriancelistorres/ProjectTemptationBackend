@@ -8,8 +8,17 @@ class RolesController{
         try{
             const reqBody :IRoles = req.body;
             const service = new RolService();
-            const result = await service.addRol(reqBody);
-            return res.json(result);
+            const result = await service.addRol(reqBody.namerol,reqBody);
+            // return res.json(result);
+            if(result?.namerol===reqBody.namerol){
+                return res.status(400).json({
+                    msg: `Ya se agrego anteriormente`,
+                  })}
+            else{
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                  })
+            }
         }catch(error){
             if (error instanceof Error) {
 
@@ -54,8 +63,22 @@ class RolesController{
             const idrol: number = parseInt(req.params.idrol);
             const reqBody: IRoles = req.body;
             const service = new RolService();
-            const result = await service.updateRoles(idrol,reqBody);
-            return res.json(result)
+            const result = await service.updateRoles(reqBody.namerol,idrol,reqBody);
+            // return res.json(result)
+            if(result?.state!=reqBody.state){
+                return res.status(200).json({
+                    msg: `activo`,
+                  })
+            }
+            if(result?.namerol===reqBody.namerol){
+                return res.status(400).json({
+                    msg: `Ya se agrego anteriormente`,
+                  })}
+            else{
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                  })
+            }
 
         } catch (error) {
             if (error instanceof Error) {
