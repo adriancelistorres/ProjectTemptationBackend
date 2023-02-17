@@ -74,8 +74,24 @@ class StylesController{
             const idstyles: number = parseInt(req.params.idstyles);
             const reqBody: IStyles = req.body;
             const service = new StyleService();
-            const result = await service.updateStyle(idstyles,reqBody);
-            return res.json(result);
+            const result = await service.updateStyle(reqBody.name_sty,idstyles,reqBody);
+            // return res.json(result);
+
+            if(result?.state!=reqBody.state){
+                return res.status(200).json({
+                    msg: `activo`,
+                  })
+            }
+            if(result?.name_sty===reqBody.name_sty){
+                return res.status(400).json({
+                    msg: `Ya se agrego anteriormente`,
+                  })}
+            else{
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                  })
+            }
+
         } catch (error) {
             if (error instanceof Error) {
 
