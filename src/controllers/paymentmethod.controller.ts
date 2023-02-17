@@ -62,7 +62,9 @@ class PaymentmethodController{
             const result = await service.UpdateServicePaymentMethod(resBody.name_pay,idpay,resBody);
             //return res.json(result)
             if(result?.state != resBody.state){
-
+                return res.status(200).json({
+                    msg: `activo`,
+                  })
             }
             if (result?.name_pay === result?.name_pay) {
                 return res.status(400).json({
