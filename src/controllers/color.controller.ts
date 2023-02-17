@@ -9,24 +9,16 @@ class ColorController{
     public async addColor(req: Request, res:Response){
         try {
             const reqBody :IColor = req.body;
-            const service = new ColorService();
-            
+            const service = new ColorService();   
             const result = await service.addColor(reqBody.name_col,reqBody)
 
-            
+            console.log("IMPRIMIENDO RESULT: "+result);//null       
 
-            console.log("IMPRIMIENDO RESULT: "+result);//null
-            
-
-            if (result?.name_col === reqBody.name_col) {
-                
+            if (result?.name_col === reqBody.name_col) {         
                 return res.status(400).json({
                     msg: `Ya se agrego anteriormente`,
                   })
             } 
-
-               
-
             else {
                 return res.status(200).json({
                     msg: `Se agrego correctamente`,
@@ -35,7 +27,6 @@ class ColorController{
             
         } catch (error) {
             if (error instanceof Error) {
-
                 console.log(error.message)
                 return res.status(500).json({ message: error.message });
             }
