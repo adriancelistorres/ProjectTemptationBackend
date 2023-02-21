@@ -18,8 +18,12 @@ import productsRouter from "./routes/products.routes";
 import inputRouter from "./routes/input.routes";
 import outputRouter from "./routes/output.routes";
 import claimRouter from "./routes/claim.routes"
+<<<<<<< HEAD
 
 
+=======
+import pruebaRouter from"./routes/prueba.routes"
+>>>>>>> Dyer
 import styleRouter from "./routes/style.routes";
 import path from "path";
 
@@ -32,9 +36,13 @@ app.use(cors());
 app.use(express.json());
 
 app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter,styleRouter,
+<<<<<<< HEAD
     paymentmethodRouter,orderRouter,saledetailRouter,incomeRouter,detailIncomeRouter,productsRouter,claimRouter,inputRouter,outputRouter);
 
 
 
+=======
+    paymentmethodRouter,orderRouter,saledetailRouter,incomeRouter,detailIncomeRouter,productsRouter,claimRouter,pruebaRouter);
+>>>>>>> Dyer
 
 export default app;
