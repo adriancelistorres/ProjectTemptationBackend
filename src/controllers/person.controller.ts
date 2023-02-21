@@ -14,7 +14,16 @@ class PersonController{
             const result=await service.addPerson(reqBody.username,reqBody);
            
         
-            return res.json(result)
+            //return res.json(result)
+            if (result?.username ===reqBody.username) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anteriormente"
+                })
+            } else {
+                return res.status(200).json({
+                    msg: "Se agrego correctamente"
+                })
+            }
 
         } catch (error) {
             if (error instanceof Error) {
@@ -59,8 +68,23 @@ class PersonController{
             const idperson: number =  parseInt(req.params.idperson);
             const resBody:IPerson = req.body;
             const service = new PersonService();
-            const result = await service.UpdateServicePerson(idperson,resBody);
-            return res.json(result)
+            const result = await service.UpdateServicePerson(resBody.username,idperson,resBody);
+            //return res.json(result)
+            if (result?.state !=resBody.state) {
+                return res.status(200).json({
+                    msg: "Activo",
+                })
+            }
+
+            if(result?.username===resBody.username){
+                return res.status(400).json({
+                    msg: "Ya se agrego anteriormente",
+                })
+            }else{
+                return res.status(200).json({
+                    msg: "Se agrego correctamente",
+                })
+            }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message);

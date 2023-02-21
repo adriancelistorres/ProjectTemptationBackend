@@ -20,6 +20,7 @@ import Output from "../entities/Output";
 /*import Products from "../entities/Products";*/
 
 import Styles from "../entities/Styles";
+import Claims from "../entities/Claims";
 
 
 
@@ -34,8 +35,9 @@ export const AppDataSource = new DataSource({
   // synchronize: true,
   logging: false,
 
+
   entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,
-    Styles,Income,Order,SaleDetail,DetailIncome,Products,Input,Output],
+    Styles,Income,Order,SaleDetail,DetailIncome,Products,Claims,Input,Output],
 
 
   subscribers: [],

@@ -9,8 +9,23 @@ class StylesController{
             //EL CUERPO DE LA SOLICITUD(reqBody) VA A SER DE TIPO 'IStyles'
             const reqBody: IStyles = req.body;
             const service = new StyleService();
-            const result = await service.addStyle(reqBody);
-            return res.json(result);
+            const result = await service.addStyle(reqBody.name_sty,reqBody);
+            
+            if (result?.name_sty === reqBody.name_sty) {
+                //RETORNA UN CODIGO DE ESTADO '400'(Bad Request) Y EN EL POSTMAN COLOCA UN MENSAJE EN FORMATO JSON
+                return res.status(400).json({
+                    msg: `Ya se agrego anteriormente`,
+                  })
+            } 
+            //DE LO CONTRARIO, RETORNA UN CODIGO DE ESTADO '200'(ok), Y  EN EL POSTMAN COLOCA UN MENSAJE EN FORMATO JSON
+            //SI EL 'result' ES NULL INGRESARÁ AL ELSE      
+            else {
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                  })
+            }
+
+
         } catch (error) {
             if (error instanceof Error) {
 
@@ -59,8 +74,24 @@ class StylesController{
             const idstyles: number = parseInt(req.params.idstyles);
             const reqBody: IStyles = req.body;
             const service = new StyleService();
-            const result = await service.updateStyle(idstyles,reqBody);
-            return res.json(result);
+            const result = await service.updateStyle(reqBody.name_sty,idstyles,reqBody);
+            // return res.json(result);
+
+            if(result?.state!=reqBody.state){
+                return res.status(200).json({
+                    msg: `activo`,
+                  })
+            }
+            if(result?.name_sty===reqBody.name_sty){
+                return res.status(400).json({
+                    msg: `Ya se agrego anteriormente`,
+                  })}
+            else{
+                return res.status(200).json({
+                    msg: `Se agrego correctamente`,
+                  })
+            }
+
         } catch (error) {
             if (error instanceof Error) {
 

@@ -7,8 +7,18 @@ class SizeController{
         try {
             const reqBody: ISize = req.body;
             const service =  new sizeService();
-            const result =  await service.addServiceSize(reqBody);
-            return res.json(result)
+            const result =  await service.addServiceSize(reqBody.name_size,reqBody);
+            //return res.json(result)
+            if (result?.name_size ===reqBody.name_size) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anterormete",
+                })
+            } else {
+                return res.status(200).json({
+                    msg: "Se agrego correctamente",
+                })
+                
+            }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message)
@@ -49,8 +59,22 @@ class SizeController{
             const idsize: number =  parseInt(req.params.idsize);
             const resBody: ISize =  req.body;
             const service = new sizeService();
-            const result = await service.updateServiceSize(idsize,resBody);
-            return res.json(result);
+            const result = await service.updateServiceSize(resBody.name_size,idsize,resBody);
+            //return res.json(result);
+            if (result?.state!=resBody.state) {
+                return res.status(200).json({
+                    msg: "activo"
+                })
+            }
+            if (result?.name_size === result?.name_size) {
+                return res.status(400).json({
+                    msg: "Ya se agrego anteriormente"
+                })
+            } else {
+                return res.status(200).json({
+                    msg: "Se actualizao correctamente"
+                })
+            }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message);

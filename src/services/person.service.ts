@@ -13,9 +13,7 @@ class PersonService {
         // .andWhere("person.password = :password", { password })
         .getOne();
       // data?.dni==reqBody.dni &&
-      if (data?.username == reqBody.username) {
-        return "Usuario ya registrado ";
-      } else {
+      if (data?.username != reqBody.username) {
         const hashedPassword = await bcrypt.hash(reqBody.password, 8);
         const person = new Person();
         person.idrol = reqBody.idrol;
@@ -29,7 +27,10 @@ class PersonService {
         person.password = hashedPassword;
         person.state = reqBody.state;
         person.key = reqBody.key;
-        return await person.save();
+        person.save();
+        return data;
+      } else {
+        return data;
       }
     } catch (error) {
       return Promise.reject(" does not exist ");
@@ -81,30 +82,67 @@ class PersonService {
   }
 
   /* Metodo para actualizar un provevedor */
-  public async UpdateServicePerson(idperson: number, reqBody: IPerson) {
-    const person = await Person.findOneBy({ idperson: idperson });
+  public async UpdateServicePerson(username: string,idperson: number, reqBody: IPerson) {
+    try {
+      const data =  await AppDataSource.createQueryBuilder()
+      .select("person")
+      .from(Person, "person")
+      .where("person.username = :username",{username})
+      .getOne()
+      if (data?.state!= reqBody.state) {
+        const person = await Person.findOneBy({ idperson: idperson });
 
-    if (!person) return Promise.reject("No se encontro Persona");
+        if (!person) return Promise.reject("No se encontro Persona");
+        const hashedPassword = await bcrypt.hash(reqBody.password, 8);
+        person.idrol = reqBody.idrol;
+        person.name = reqBody.name;
+        person.lastname = reqBody.lastname;
+        person.date_b = reqBody.date_b;
+        person.dni = reqBody.dni;
+        person.gender = reqBody.gender;
+        person.address = reqBody.address;
+        person.username = reqBody.username;
+        person.password = hashedPassword;
+        person.state = reqBody.state;
+        person.key = reqBody.key;
+        person.save();
+        return data;
+      }
+      if (data?.username != reqBody.username) {
+        const person = await Person.findOneBy({ idperson: idperson });
 
-    person.name = reqBody.name;
-    person.lastname = reqBody.lastname;
-    person.date_b = reqBody.date_b;
-    person.dni = reqBody.dni;
-    person.gender = reqBody.gender;
-    person.address = reqBody.address;
-    person.username = reqBody.username;
-    person.password = reqBody.password;
-    person.state = reqBody.state;
-    person.key = reqBody.key;
-    person.save();
-    return person;
+        if (!person) return Promise.reject("No se encontro Persona");
+        const hashedPassword = await bcrypt.hash(reqBody.password, 8);
+        person.idrol = reqBody.idrol;
+        person.name = reqBody.name;
+        person.lastname = reqBody.lastname;
+        person.date_b = reqBody.date_b;
+        person.dni = reqBody.dni;
+        person.gender = reqBody.gender;
+        person.address = reqBody.address;
+        person.username = reqBody.username;
+        person.password = hashedPassword;
+        person.state = reqBody.state;
+        person.key = reqBody.key;
+        person.save();
+        return data;
+      } else {
+        return data;
+      }
+    } catch (error) {
+      return Promise.reject(" does not update ");
+    }
   }
 
   /*Metodo para Eliminar un provevedor */
   public async deleteServicePerson(idperson: number) {
     const person = await Person.findOneBy({ idperson: idperson });
+      const error ={
+        msg: "No EXISTE ESTA PERSONA"
+      }
+
     if (!person) {
-      return Promise.reject("No existe Persona");
+      return error;
     } else {
       person.state = 0;
       person.save();
