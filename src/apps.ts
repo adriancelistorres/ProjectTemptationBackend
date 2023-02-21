@@ -18,6 +18,7 @@ import productsRouter from "./routes/products.routes";
 import claimRouter from "./routes/claim.routes"
 
 import styleRouter from "./routes/style.routes";
+import path from "path";
 
 
 
@@ -29,5 +30,6 @@ app.use(express.json());
 
 app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter,styleRouter,
     paymentmethodRouter,orderRouter,saledetailRouter,incomeRouter,detailIncomeRouter,productsRouter,claimRouter);
+// app.use('/uploads', express.static(path.resolve('uploads')));
 
 export default app;
