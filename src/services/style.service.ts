@@ -66,20 +66,6 @@ class StyleService{
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 

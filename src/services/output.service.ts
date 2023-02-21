@@ -36,7 +36,7 @@ class OutputService{
     }
 
     /* Metodo para actualizar un provevedor */
-    public async UpdateServiceOutput(idout:number, reqBody:IOutput){
+    public async updateServiceOutput(idout:number, reqBody:IOutput){
        const out = await Output.findOneBy({idout:idout});
 
        if(!out) return Promise.reject("No hay Salidas de Productos");

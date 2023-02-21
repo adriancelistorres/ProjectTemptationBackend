@@ -40,7 +40,7 @@ class InputService{
     public async updateServiceInput(idinput:number, reqBody:IInput){
         const input = await Input.findOneBy({idinput:idinput});
         if(!input)
-        return Promise.reject("NO HAY INPUTS");
+        return Promise.reject("NO EXISTE INPUTS");
         input.idproduc = reqBody.idproduc,
         input.stock = reqBody.stock,
         input.dateinp = reqBody.dateinp
@@ -48,7 +48,6 @@ class InputService{
         input.save();
         return input;
     }
-
 
 }
 

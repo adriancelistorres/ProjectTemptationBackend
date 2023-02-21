@@ -13,7 +13,8 @@ import Order from "../entities/Order";
 import SaleDetail from "../entities/Sale_Detail";
 import DetailIncome from "../entities/DetailIncome";
 import Products from "../entities/Products";
-
+import Input from "../entities/Input";
+import Output from "../entities/Output";
 
 
 /*import Products from "../entities/Products";*/
@@ -33,7 +34,8 @@ export const AppDataSource = new DataSource({
   // synchronize: true,
   logging: false,
 
-  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,Styles,Income,Order,SaleDetail,DetailIncome,Products],
+  entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,
+    Styles,Income,Order,SaleDetail,DetailIncome,Products,Input,Output],
 
 
   subscribers: [],

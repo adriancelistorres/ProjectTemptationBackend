@@ -1,14 +1,14 @@
 import{Request, Response} from "express";
-import { IOutput } from "../Interfaces/IOutput";
-import OutputService from "../services/output.service";
+import { IInput } from "../Interfaces/IInput";
+import InputService from "../services/input.service";
 
-class OutputController{
+class InputController{
 
-    public async addOutput(req: Request, res:Response){
+    public async addInput(req: Request, res:Response){
         try {
-            const reqBody: IOutput =req.body;
-            const service = new OutputService();
-            const result = await service.addServiceOutput(reqBody);
+            const reqBody: IInput =req.body;
+            const service = new InputService();
+            const result = await service.addServiceInput(reqBody);
             return res.json(result);
             
         } catch (error) {
@@ -21,12 +21,12 @@ class OutputController{
         
     }
 
-    public async getOutput(req: Request, res:Response){
+    public async getInput(req: Request, res:Response){
 
         try {
 
-            const service = new OutputService();
-            const result = await service.getServiceOutput();
+            const service = new InputService();
+            const result = await service.getServiceInput();
             return res.json(result);
 
         } catch (error) {
@@ -39,11 +39,11 @@ class OutputController{
         }
     }
 
-    public async getOneOutput(req:Request, res:Response){
+    public async getOneInput(req:Request, res:Response){
         try{
             const idinput: number = parseInt(req.params.idinput);
-            const service = new OutputService();
-            const result = await service.getServiceOneOutput(idinput);
+            const service = new InputService();
+            const result = await service.getServiceOneInput(idinput);
             return res.json(result);
         }catch(error){
             if (error instanceof Error) {
@@ -55,12 +55,12 @@ class OutputController{
 
     }
 
-    public async updateOutput(req: Request, res:Response){
+    public async updateInput(req: Request, res:Response){
         try {
             const idinput: number = parseInt(req.params.idinput);
-            const reqBody: IOutput = req.body;
-            const service = new OutputService();
-            const result = await service.updateServiceOutput(idinput,reqBody);
+            const reqBody: IInput = req.body;
+            const service = new InputService();
+            const result = await service.updateServiceInput(idinput,reqBody);
             return res.json(result);
         } catch (error) {
             if (error instanceof Error) {
@@ -72,4 +72,5 @@ class OutputController{
     }
 
 }
-export default OutputController;
+
+export default InputController;

@@ -75,7 +75,7 @@ class StylesController{
             const idstyles: number = parseInt(req.params.idstyles);
             const service = new StyleService();
             const result = await service.deleteStyle(idstyles);
-            return res.json(result);
+            return res.json(result)
         } catch (error) {
             if (error instanceof Error) {
 
