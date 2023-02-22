@@ -54,11 +54,9 @@ class Providerservice{
         if(!prov) return Promise.reject("No hay Proveedor");
 
         prov.name_prov = reqBody.name_prov;
-        prov.state = reqBody.state;
         prov.ruc=reqBody.ruc;
         prov.company_name=reqBody.company_name;
         prov.phone=reqBody.phone;
-        prov.email=reqBody.email;
         prov.email=reqBody.email;
         prov.description=reqBody.description;
         prov.address =  reqBody.address;
