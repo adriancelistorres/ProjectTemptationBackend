@@ -7,10 +7,10 @@ const validatetoken =  new ValidateToken;
 
 const router =  Router();
 
-router.post("/addproduct",productsController.addProduct);
-router.get("/products",productsController.getProducts);
-router.get("/product/:idproduc",productsController.getOneProduct);
-router.put("/product/:idproduc",productsController.UpdateProduct);
-router.delete("/product/:idproduc",productsController.deleteProduct);
+router.post("/addproduct",validatetoken.Token,productsController.addProduct);
+router.get("/products",validatetoken.Token,productsController.getProducts);
+router.get("/product/:idproduc",validatetoken.Token,productsController.getOneProduct);
+router.put("/product/:idproduc",validatetoken.Token,productsController.UpdateProduct);
+router.delete("/product/:idproduc",validatetoken.Token,productsController.deleteProduct);
 
 export default router;
