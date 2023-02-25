@@ -9,7 +9,7 @@ import{BaseEntity, Column, Entity, PrimaryGeneratedColumn} from "typeorm";
   idprovider: number;
 
   @Column()
-  dateinco: Date;
+  dateinco: string;
 
   @Column()
   state: number;
