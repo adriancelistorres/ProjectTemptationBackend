@@ -5,7 +5,6 @@ class DetailIncomeService{
 
     public async addServiceDetailIncome(reqBody: IDetailIncome){
         const detailincome =  new DetailIncome();
-        detailincome.idincome = reqBody.idicome;
         detailincome.idicome =  reqBody.idicome;
         detailincome.idproduc=reqBody.idproduc;
         detailincome.price_buy=reqBody.price_buy;
@@ -42,7 +41,6 @@ class DetailIncomeService{
 
         if(!detailincome) return Promise.reject("No existe Detalle Ingreso");
 
-        detailincome.idincome = reqBody.idincome;
         detailincome.idicome=reqBody.idicome;
         detailincome.idproduc=reqBody.idproduc;
         detailincome.price_buy = reqBody.price_buy;
