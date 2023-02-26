@@ -18,7 +18,7 @@ import productsRouter from "./routes/products.routes";
 import inputRouter from "./routes/input.routes";
 import outputRouter from "./routes/output.routes";
 import claimRouter from "./routes/claim.routes"
-
+import tuwebaRouter from "./routes/IncomeDetIncome.routes";
 
 import pruebaRouter from"./routes/prueba.routes"
 
@@ -34,6 +34,6 @@ app.use(cors());
 app.use(express.json());
 
 app.use(loginRoutes,personRoutes,rolesRouter,categoryRoutes,brandRouter,siceRouter,colorRouter,providerRouter,styleRouter,
-    paymentmethodRouter,orderRouter,saledetailRouter,incomeRouter,detailIncomeRouter,productsRouter,claimRouter,inputRouter,outputRouter,pruebaRouter);
+    paymentmethodRouter,orderRouter,saledetailRouter,incomeRouter,detailIncomeRouter,productsRouter,claimRouter,inputRouter,outputRouter,pruebaRouter,tuwebaRouter);
 
 export default app;

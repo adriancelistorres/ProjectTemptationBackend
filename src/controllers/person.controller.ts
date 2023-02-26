@@ -51,7 +51,7 @@ class PersonController{
 
     public async getOnePerson(req: Request, res: Response){
         try {
-            let idperson: number = parseInt(req.params.idperson)
+            const idperson: number = parseInt(req.params.idperson)
             const service =  new PersonService();
             const result =  await service.getServiceOnePerson(idperson);
             return res.json(result);
