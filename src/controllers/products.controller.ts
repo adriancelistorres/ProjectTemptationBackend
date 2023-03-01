@@ -54,15 +54,15 @@ class ProductsController{
             const service = new ProductsService();
             const result = await service.UpdateServiceProduct(resBody.name_p, idproduc,resBody);
             // return res.json(result)
-            if(result?.name_p==resBody.name_p ){
-                return res.status(400).json({
-                    msg: "Ya se agrego anteriormente",
-                })
-            }else{
-                return res.status(200).json({
-                    msg: "Se agrego correctamente",
-                })
-            }
+            // if(result?.name_p==resBody.name_p ){
+            //     return res.status(400).json({
+            //         msg: "Ya se agrego anteriormente",
+            //     })
+            // }else{
+            //     return res.status(200).json({
+            //         msg: "Se agrego correctamente",
+            //     })
+            // }
         } catch (error) {
             if(error instanceof Error){
                 console.log(error.message);
