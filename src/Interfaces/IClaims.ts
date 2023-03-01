@@ -3,7 +3,7 @@ export interface IClaims{
     idorder: number| any,
     subject: string| any,
     descripcion:string| any,
-    date: Date| any,
+    date: string| any,
     image:string| any,
     state: number| any
 

@@ -52,11 +52,10 @@ class ClaimService{
 
         if(!claim) return Promise.reject("No hay Reclamos");
 
-        claim.idorder = reqBody.idorder;
-        claim.subject = reqBody.subject;
-        claim.descripcion = reqBody.descripcion;
-        claim.image = reqBody.image;
-        claim.date = reqBody.date;
+        claim.idorder = reqBody.idorder,
+        claim.subject = reqBody.subject,
+        claim.descripcion = reqBody.descripcion,
+        claim.date = reqBody.date,
         claim.state = reqBody.state;
 
         claim.save();
@@ -81,21 +80,19 @@ class ClaimService{
         //         msg: "NO EXISTE ESE RECLAMO ",
         //       });
         // }
+        const error = {
+            msg: "NO EXISTE ESE MARCA",
+          };
         if(!claim){
-            console.log("NO EXISTE ESE RECLAMO:"+idclaims);
-            return Promise.reject("NO HAY RECLAMO")
-
-            
-            
+           
+            return error;
+              
         }else{
             claim.state = 0;
             claim.save();
             return claim;
         }
     }
-
-
-
 }
 
 export default ClaimService;
