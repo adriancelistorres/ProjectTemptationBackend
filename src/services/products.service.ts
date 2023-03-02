@@ -91,14 +91,14 @@ class ProductsService {
     reqBody: IProducts
   ) {
     try {
-      const data = await AppDataSource.createQueryBuilder()
-        .select("products")
-        .from(Products, "products")
-        .where("products.name_p = :name_p", { name_p })
-        .getOne();
+      // const data = await AppDataSource.createQueryBuilder()
+      //   .select("products")
+      //   .from(Products, "products")
+      //   .where("products.name_p = :name_p", { name_p })
+      //   .getOne();
 
-      console.log(data);
-      if (data?.state !=  reqBody.state) {
+      // console.log(data);
+      // if (data?.state !=  reqBody.state) {
         const product = await Products.findOneBy({ idproduc: idproduc });
 
         if (!product) return Promise.reject("No se encontro Producto");
@@ -117,32 +117,32 @@ class ProductsService {
         product.image_using = reqBody.image_using;
         product.state = reqBody.state;
         product.save();
-        return data;
-      }
+        return product;
+      // }
 
-      if (data?.name_p != reqBody.name_p) {
-        const product = await Products.findOneBy({ idproduc: idproduc });
+      // if (data?.name_p != reqBody.name_p) {
+      //   const product = await Products.findOneBy({ idproduc: idproduc });
 
-        if (!product) return Promise.reject("No se encontro Producto");
+      //   if (!product) return Promise.reject("No se encontro Producto");
 
-        product.idcat = reqBody.idcat;
-        product.idsize = reqBody.idsize;
-        product.idstyles = reqBody.idstyles;
-        product.idbrand = reqBody.idbrand;
-        product.idcolor = reqBody.idcolor;
-        product.name_p = reqBody.name_p;
-        product.description = reqBody.description;
-        product.price = reqBody.price;
-        product.stock = reqBody.stock;
-        product.image_front = reqBody.image_front;
-        product.image_back = reqBody.image_back;
-        product.image_using = reqBody.image_using;
-        product.state = reqBody.state;
-        product.save();
-        return data;
-      } else {
-        return data;
-      }
+      //   product.idcat = reqBody.idcat;
+      //   product.idsize = reqBody.idsize;
+      //   product.idstyles = reqBody.idstyles;
+      //   product.idbrand = reqBody.idbrand;
+      //   product.idcolor = reqBody.idcolor;
+      //   product.name_p = reqBody.name_p;
+      //   product.description = reqBody.description;
+      //   product.price = reqBody.price;
+      //   product.stock = reqBody.stock;
+      //   product.image_front = reqBody.image_front;
+      //   product.image_back = reqBody.image_back;
+      //   product.image_using = reqBody.image_using;
+      //   product.state = reqBody.state;
+      //   product.save();
+      //   return data;
+      // } else {
+      //   return data;
+      // }
     } catch (error) {
       return Promise.reject(" does not update ");
     }
