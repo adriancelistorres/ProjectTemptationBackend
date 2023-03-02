@@ -118,6 +118,8 @@ class ProductsService {
         product.state = reqBody.state;
         product.save();
         return product;
+      // }else{
+      //   return data;
       // }
 
       // if (data?.name_p != reqBody.name_p) {
