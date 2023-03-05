@@ -161,6 +161,8 @@ class ProductsService {
       product.state = 0;
       product.save();
       return product;
+
+      
     }
   }
 }
