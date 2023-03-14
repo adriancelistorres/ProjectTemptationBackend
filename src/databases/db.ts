@@ -26,6 +26,7 @@ import Claims from "../entities/Claims";
 
 const PORT:any=DB_PORT
 export const AppDataSource = new DataSource({
+
   type: "mysql",
   host: DB_HOST,
   port: PORT,
@@ -34,12 +35,11 @@ export const AppDataSource = new DataSource({
   database: DB_DATABASE,
   // synchronize: true,
   logging: false,
-
-
   entities: [Roles,Person,Category,Size,Color,Brand,Provider,PaymentMethod,
     Styles,Income,Order,SaleDetail,DetailIncome,Products,Claims,Input,Output],
-
-
   subscribers: [],
   migrations: [],
+
+  
 });
+

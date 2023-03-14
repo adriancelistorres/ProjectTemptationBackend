@@ -21,7 +21,7 @@ class LoginController {
       const reqBody = req.body;
       const service = new LoginService();
       const result = await service.Login(reqBody.username);
-      // console.log("LOG RESULT", result);
+      // console.log("LOG RESULT", result?.idrol);
       const pass: string | any = result?.password;
       if (result?.username == reqBody.username && reqBody.password != null) {
         if (result?.idrol == 1) {
@@ -33,6 +33,8 @@ class LoginController {
                   idrol: result?.idrol,
                   username: result?.username,
                   password: result?.password,
+                  rol:result.idrol
+                  
                 },
                 process.env.SECRET_KEY || "pepe"
               );
