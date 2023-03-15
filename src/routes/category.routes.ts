@@ -13,4 +13,7 @@ import ValidateToken from "../controllers/validate-token.controller";
  router.put("/category/:idcat",validatetoken.Token, categorycontroller.updateCatgory);
  router.delete("/category/:idcat",validatetoken.Token, categorycontroller.deleteCategory);
 
+ /*para el cliente */
+ router.get("/categorys2",validatetoken.Token, categorycontroller.getCategory);
+ router.get("/category2/:idcat",validatetoken.Token, categorycontroller.getOneCategory);
  export default router;

@@ -14,4 +14,8 @@ router.get("/color/:idcolor",validatetoken.Token,colorcontroller.getOneColor);
 router.put("/color/:idcolor",validatetoken.Token,colorcontroller.updateColor);
 router.delete("/color/:idcolor",validatetoken.Token,colorcontroller.deleteColor);
 
+
+/*Para el Cliente*/
+router.get("/colors2",colorcontroller.getColor);
+router.get("/color2/:idcolor",colorcontroller.getOneColor);
 export default router;

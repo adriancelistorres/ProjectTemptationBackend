@@ -14,4 +14,7 @@ router.get("/brand/:idbrand",validatetoken.Token,brandcontroller.getOneBrand);
 router.put("/brand/:idbrand",validatetoken.Token,brandcontroller.UpdateBrand);
 router.delete("/brand/:idbrand",validatetoken.Token,brandcontroller.deleteBrand);
 
+/*Para el cliente */
+router.get("/brands2",brandcontroller.getBrand);
+router.get("/brand2/:idbrand",brandcontroller.getOneBrand);
 export default router;
