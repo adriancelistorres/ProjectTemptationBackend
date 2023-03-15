@@ -15,4 +15,7 @@ router.get("/size/:idsize",validatetoken.Token,sizecontroller.getOneSize);
 router.put("/size/:idsize",validatetoken.Token,sizecontroller.UpdateSize);
 router.delete("/size/:idsize",validatetoken.Token,sizecontroller.deleteSize);
 
+//RUTAS PARA EL CLIENTE
+router.get("/sizes2",sizecontroller.getSize);
+router.get("/size2/:idsize",sizecontroller.getOneSize);
 export default router;
