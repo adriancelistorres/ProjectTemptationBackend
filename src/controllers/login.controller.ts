@@ -24,7 +24,7 @@ class LoginController {
       // console.log("LOG RESULT", result?.idrol);
       const pass: string | any = result?.password;
       if (result?.username == reqBody.username && reqBody.password != null) {
-        if (result?.idrol == 1 || result?.idrol == 2 ||  result?.idrol == 3) {
+        if (result?.idrol == 1 || result?.idrol == 3||  result?.idrol == 4) {
           bcrypt.compare(reqBody.password, pass).then((endP) => {
             console.log(endP);
             if (endP == true) {
@@ -32,6 +32,9 @@ class LoginController {
                 {
                   idrol: result?.idrol,
                   username: result?.username,
+                  name: result?.name,
+                  lastname: result?.lastname,
+                  dni: result?.dni,
                   password: result?.password,
                   rol:result.idrol
                   
