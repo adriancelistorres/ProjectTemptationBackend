@@ -12,5 +12,5 @@ export interface IPerson{
   username: string|any|undefined,
   password: string|any|undefined,
   state: number|any|undefined,
-  key: string|any|undefined
+  email: string|any|undefined
 }

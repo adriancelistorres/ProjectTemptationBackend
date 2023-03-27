@@ -30,6 +30,6 @@ class Person extends BaseEntity {
   @Column()
   state: number;
   @Column()
-  key: string;
+  email: string;
 }
 export default Person;

@@ -26,7 +26,7 @@ class PersonService {
         person.username = reqBody.username;
         person.password = hashedPassword;
         person.state = reqBody.state;
-        person.key = reqBody.key;
+        person.email = reqBody.email;
         person.save();
         return data;
       } else {
@@ -54,7 +54,7 @@ class PersonService {
         username: b.username,
         password: b.password,
         state: b.state,
-        key: b.key,
+        email: b.email,
       };
       respuesta.push(obj);
     });
@@ -76,7 +76,7 @@ class PersonService {
       username: person?.username,
       password: person?.password,
       state: person?.state,
-      key: person?.key,
+      email: person?.email,
     };
     return respuesta;
   }
@@ -104,7 +104,7 @@ class PersonService {
         person.username = reqBody.username;
         person.password = hashedPassword;
         person.state = reqBody.state;
-        person.key = reqBody.key;
+        person.email = reqBody.email;
         person.save();
         return data;
       }
@@ -123,7 +123,7 @@ class PersonService {
         person.username = reqBody.username;
         person.password = hashedPassword;
         person.state = reqBody.state;
-        person.key = reqBody.key;
+        person.email = reqBody.email;
         person.save();
         return data;
       } else {
