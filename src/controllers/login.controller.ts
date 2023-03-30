@@ -30,6 +30,8 @@ class LoginController {
             if (endP == true) {
               const token = jwt.sign(
                 {
+                  idperson: result?.idperson,
+
                   idrol: result?.idrol,
                   username: result?.username,
                   name: result?.name,
