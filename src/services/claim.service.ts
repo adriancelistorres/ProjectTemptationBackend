@@ -7,6 +7,7 @@ class ClaimService{
         const claim = new Claims();
         claim.idclaims = reqBody.idclaims;
         claim.idorder = reqBody.idorder;
+        claim.idperson = reqBody.idperson;
         claim.subject = reqBody.subject;
         claim.descripcion = reqBody.descripcion;
         claim.image = reqBody.image;
@@ -22,6 +23,7 @@ class ClaimService{
             let obj: IClaims ={
                 idclaims: c.idclaims,
                 idorder: c.idorder,
+                idperson: c.idperson,
                 subject: c.subject,
                 descripcion: c.descripcion,
                 image:c.image,
@@ -38,6 +40,7 @@ class ClaimService{
         let respuesta: IClaims ={
             idclaims: claim?.idclaims,
             idorder: claim?.idorder,
+            idperson: claim?.idperson,
             subject: claim?.subject,
             descripcion: claim?.descripcion,
             image: claim?.image,
@@ -53,6 +56,7 @@ class ClaimService{
         if(!claim) return Promise.reject("No hay Reclamos");
 
         claim.idorder = reqBody.idorder,
+        claim.idperson = reqBody.idperson,
         claim.subject = reqBody.subject,
         claim.descripcion = reqBody.descripcion,
         claim.date = reqBody.date,
