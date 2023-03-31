@@ -12,5 +12,10 @@ router.get("/claim/:idclaims", validatetoken.Token, claimController.getOneClaim)
 router.put("/claim/:idclaims", validatetoken.Token, claimController.updateClaim);
 router.delete("/claim/:idclaims", validatetoken.Token, claimController.deleteClaim);
 
-export default router;
+//
+router.post("/claim2", claimController.addClaim);
+router.get("/claims2", claimController.getClaim);
+router.get("/claim2/:idclaims", claimController.getOneClaim);
+router.delete("/claim2/:idclaims",claimController.deleteClaim);
 
+export default router;

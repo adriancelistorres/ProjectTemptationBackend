@@ -9,6 +9,9 @@ class Claims extends BaseEntity{
     idorder: number;
 
     @Column()
+    idperson: number;
+
+    @Column()
     subject: string;
 
     @Column()
