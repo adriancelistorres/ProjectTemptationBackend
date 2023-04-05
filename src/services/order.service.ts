@@ -7,7 +7,7 @@ class Orderservice{
     /*Metodo para Agregar una Order */
     public async addServiceOrder(reqBody: IOrder){
         const order = new Order();
-        order.idorder =  reqBody.idOrder;
+        order.idorder =  reqBody.idorder;
         order.idperson = reqBody.idperson;
         order.idpay =  reqBody.idpay;
         order.dateorder = reqBody.dateorder;
@@ -20,7 +20,7 @@ class Orderservice{
         let respuesta: IOrder[] = ([] =[]);
         const order =  await Order.find();
         order.map((o) =>{
-            let obj: IOrder = {idOrder: o.idorder, idperson: o.idperson,idpay: o.idpay, dateorder: o.dateorder, state: o.state};
+            let obj: IOrder = {idorder: o.idorder, idperson: o.idperson,idpay: o.idpay, dateorder: o.dateorder, state: o.state};
             respuesta.push(obj);
         })
         return respuesta;
@@ -30,7 +30,7 @@ class Orderservice{
     public async getServiceOneOrder(idorder: number){
         const order =  await Order.findOneBy({idorder: idorder});
         let respuesta: IOrder ={
-            idOrder: order?.idorder,
+            idorder: order?.idorder,
             idpay: order?.idpay,
             idperson: order?.idperson,
             dateorder: order?.dateorder,

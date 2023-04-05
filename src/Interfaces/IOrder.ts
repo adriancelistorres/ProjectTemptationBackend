@@ -1,5 +1,5 @@
 export interface IOrder{
-    idOrder: number | any,
+    idorder: number | any,
     idperson: number|any,
     idpay: number|any,
     dateorder: Date |any,
