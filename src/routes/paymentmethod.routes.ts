@@ -15,4 +15,8 @@ router.get("/paymentmethod/:idpay",validatetoken.Token,paymenthmethodController.
 router.put("/paymentmethod/:idpay",validatetoken.Token,paymenthmethodController.updatePaymentMethod);
 router.delete("/paymentmethod/:idpay",validatetoken.Token,paymenthmethodController.deletePaymentMethod);
 
+
+router.post("/paymentmethod2",paymenthmethodController.addPaymentMethod);
+router.get("/paymentmethods2",paymenthmethodController.getPaymentMethod);
 export default router;
+
