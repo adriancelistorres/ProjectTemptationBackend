@@ -14,6 +14,19 @@ class PruebaController{
             }
         }
     }
+    public async getLastOrder(req: Request, res:Response){
+        try {
+            const service = new PruebaRol();
+            const result = await service.GetLastOrder();
+            return res.json(result);
+        } catch (error) {
+            if (error instanceof Error) {
+
+                console.log(error.message)
+                return res.status(500).json({ message: error.message });
+            }
+        }
+    }
 }
 
 export default PruebaController
