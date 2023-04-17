@@ -4,6 +4,7 @@ import PersonService from "../services/person.service";
 import bcrypt from 'bcrypt'
 import { AppDataSource } from "../databases/db";
 import Person from "../entities/Person";
+import { IPersonUpdate } from "../Interfaces/IPersonUpdate";
 
 class PersonController{
     public async addPerson(req:Request,res:Response){
@@ -109,5 +110,28 @@ class PersonController{
         }
     }
 
+    public async UpdatePersonCliente(req: Request, res: Response){
+        try {
+            const idperson: number =  parseInt(req.params.idperson);
+            const resBody:IPersonUpdate = req.body;
+            const service = new PersonService();
+            const result = await service.UpdateServicePersonCliente(resBody.username,idperson,resBody);
+            //return res.json(result)
+            if (result ==true) {
+                return res.status(200).json({
+                    msg: "Se actualizó correctamente",
+                })
+            }else{
+                return res.status(400).json({
+                    msg: "Error al actualizar",
+                })
+            }
+        } catch (error) {
+            if(error instanceof Error){
+                console.log(error.message);
+                return res.status(500).json({message: error.message})
+               }
+        }
+    }
 }
 export default PersonController
